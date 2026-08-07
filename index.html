@@ -33,13 +33,15 @@
             html, body{
                 background-color: #060812;
                 margin: 0;
+                padding-left: auto;
+                padding-right: auto;
             }
             .coolimgdiv{
                 object-position: center;
                 align-items: center;   
                 margin-top: 70px; 
                 animation-name: slide;
-                animation-duration: 0.15s;
+                animation-duration: 0.20s;
                 animation-timing-function: ease-out;
                 margin-bottom: 0px;
             }
@@ -100,8 +102,9 @@
             }
             .anim{
                 animation-name: slide1;
-                animation-duration: 0.15s;
-                animation-timing-function: ease-out
+                animation-duration: 0.20s;
+                animation-timing-function: ease-out;
+                padding-bottom: 50px;
             }
             @keyframes slide1{
                 from{
@@ -112,6 +115,47 @@
                     transform: translateY(0);
                     opacity: 1;
                 }
+            }
+                .name1{
+                color: #D4D4D4;
+                font-family: monospace;
+                font-size: 11px;
+                font-weight: 400;
+                letter-spacing: 0px;
+                text-shadow: 0px 0px 0 rgb(254, 254, 254);
+                text-align: center;
+                display: inline-block;
+                animation-name: type;
+                border-right: 2px solid;
+                animation: type 0.75s step-end infinite;
+            }
+                @keyframes type {
+                from, to{ border-color: transparent}
+                50% { border-color: #D4D4D4}
+            }
+            .und{
+            }
+            .und:hover{
+                text-decoration: underline;
+                text-decoration-thickness: 1px;
+            }
+               .namediv1{
+                width:auto;
+                width: 100%;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                margin-left:auto;
+                margin-right:auto;
+                margin-bottom: -20px;
+            }
+            .show{
+            color: #D4D4D4;
+            font-family: Consolas;
+            font-size: 16px;
+            text-align: center;
+            font-weight:500;
+            margin-bottom: 6px;
             }
         </style>
     </head>
@@ -128,7 +172,34 @@
 ██║ ╚═╝ ██║╚██████╔╝██║  ██║██║  ██║██║ ╚═╝ ██║██║ ╚═╝ ██║███████╗██████╔╝    ███████║██║  ██║╚██████╔╝██████╔╝
 ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝     ╚═╝╚══════╝╚═════╝     ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ 
                                                                                                                                                                                                                                            
-        </p></div>
+        </p>
         <hr class="line"></div>
-      </body>
-      </html>
+        <div class="namediv1">
+        <p class="name1" style="
+        font-size: 18px;">
+        <span class="und">i</span>
+        <span class="und">like</span> 
+        <span class="und">building</span> 
+        <span class="und">cool</span> 
+        <span class="und">shit.</span></p>
+        </div>
+        </div>
+
+        <div><div class="namediv1"><h2 style="
+            color: #D4D4D4;
+            font-family: Consolas;
+            font-size: 46px;
+            text-align: center;
+            font-weight:500;">
+        <span class="und">Skills</span> <span class="und">&</span> <span class="und">Interests</span>
+        </h2>
+        </div>
+        <p class="show"><span class="und">Video Editing</span></p>
+        <p class="show"><span class="und">Programming</span></p>
+        <p class="show"><span class="und">Hackathons</span></p>
+        <p class="show"><span class="und">Learning Random Tech Skills</span></p>
+        <p class="show"><span class="und">Art</span></p>
+        <p class="show"><span class="und">Philosophy</span></p>
+        <p class="show"><span class="und">Writing</span></p>
+    </body>
+</html>
