@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> 3AM Perosnal Website</title>
+        <style>
+            .coolimg{
+                background-color: rgb(12,12,12);
+                height: 500px;
+                border-style: dashed;
+                border-color:beige;
+                display: flex;
+                max-width: 1150px;
+                margin: 0 auto;
+            }
+            html, body{
+                background-color: rgb(12,12,12);
+                margin: 0;
+                padding: 0;
+                overflow-x: hidden;
+            }
+            .coolimgdiv{
+                object-position: center;
+                align-items: center;   
+                margin-top: 70px; 
+            }
+            .hand{
+                width: 50%;
+                height: 100%;
+                background-repeat: no-repeat;
+                background-size: contain;
+                animation-duration: 1s;
+                animation-timing-function: ease-out;
+                animation-fill-mode: forwards;
+            }
+            .left-hand{
+                background-image: url(images/left-hand.png);
+                animation-name: slideleft;
+                background-position: left center;
+            }
+            .right-hand{
+                background-image: url(images/right-hand.png);
+                background-position: right center;
+                animation-name: slideright;
+            }
+            @keyframes slideleft{
+                from{
+                    transform: translateX(-100%);
+                    opacity: 0;
+                }
+                to{
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideright{
+                from{
+                    transfrom: translateX(100%);
+                    opacity: 0;
+                }
+                to{
+                    transfrom: translateX(0);
+                    opacity: 1;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="coolimgdiv">
+            <header class="coolimg">
+                <div class="hand left-hand"></div>
+                <div class="hand right-hand"></div>
+        </header></div>
+        <div><p>I'm Muhammed Saud!</p></div>
+        <div><p>A kid striving for Digital Polymatheism.</p></div>
+        
+    </body>
+</html>
