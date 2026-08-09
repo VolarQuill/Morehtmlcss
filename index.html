@@ -3,13 +3,29 @@
     <head>
         <title>3AM Personal Website</title>
         <style>
+            @font-face {
+                font-family: 'VCR OSD Mono';
+                src: url(VCR_OSD_MONO_1.001.ttf) format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+
             p{
                 margin:0;
                 padding: 0;
 
             }
+            html{
+                background-color: #060812;
+                background-image:   linear-gradient(to right, #363636 2.5px, transparent 2.5px),
+                                    linear-gradient(to bottom, #363636 2.5px, transparent 2.5px),
+                                    linear-gradient(to right, #363636 1px, transparent 1px),
+                                    linear-gradient(to bottom, #363636 1px, transparent 1px);
+                background-size: 200px 200px, 200px 200px, 40px 40px, 40px 40px;
+            }
             body{
                 padding-bottom: 100px;
+                
             }
             .coolimg{
                 background-color: rgb(12,12,12);
@@ -28,12 +44,7 @@
                 animation-name: slide;
                 animation-duration: 0.25s;
                 animation-timing-function: ease-out;
-            }
-            html, body{
-                background-color: #060812;
-                margin: 0;
-                padding-left: auto;
-                padding-right: 0;
+                box-shadow: 0px 0px 15px white;
             }
             .coolimgdiv{
                 object-position: center;
@@ -98,6 +109,7 @@
             .line{
                 width: 780px;
                 color: #D4D4D4;
+                box-shadow: 0px 0px 40px white;
             }
             .anim{
                 animation-name: slide1;
@@ -133,6 +145,7 @@
                 50% { border-color: #D4D4D4}
             }
             .und{
+                text-shadow: 0px 0px 2px white;
             }
             .und:hover{
                 text-decoration: underline;
@@ -159,16 +172,14 @@
                 margin-bottom: -20px;
                 margin-top: 60px;
                 justify-content: left;
-                margin: 0;
                 padding: 0;
-                padding-left: 180px;
             }
             .namediv2:hover{
             
             }
             .show{
                 color: #D4D4D4;
-                font-family: monospace;
+                font-family: 'VCR OSD Mono';
                 font-size: 16px;
                 text-align: center;
                 font-weight:500;
@@ -177,19 +188,26 @@
             .text{
                 color: #D4D4D4;
                 background-color: rgb(32,32,32);
-                box-shadow: 3px 3px 0 #969696;
+                box-shadow: 0px 0px 10px #969696;
                 border-style: solid;
                 display: flex;
                 border-width: 1px;
-                border-color: #969696;
+                border-color: white;
+                border-radius: 8px;
                 padding: 10px 20px 10px 20px;
                 margin-right: 10px;
-                font-family: Helvetica;
+                font-family: 'VCR OSD Mono';
                 margin-bottom: 20px;
                 font-size: 16px;
+                transition: all 0.1s ease-in-out;
             }
             .text:hover{
-
+                transform: translate(-3px, -3px);
+                box-shadow: 0px 0px 15px white;
+            }
+            text:active{
+                transform: translate(3px, 3px);
+                box-shadow: 0px 0px 0px;
             }
             .buttons{
                 padding-left: 220px;
@@ -198,7 +216,7 @@
                 color:#D4D4D4;
                 flex: 1;
                 margin-left: 40px;
-                margin-top: 20px;
+                margin-top: 50px;
             }
             a {
                 color: inherit;
@@ -209,26 +227,34 @@
             }
             .name2{
                 color: #D4D4D4;
-                font-family: monospace;
                 font-size: 11px;
                 font-weight: 400;
                 letter-spacing: 0px;
                 text-shadow: 0px 0px 0 rgb(254, 254, 254);
                 text-align: center;
                 display: inline-block;
-                 font-size: 60px; 
-                transform: scaleY(1);
-                font-family: Helvetica;
-                letter-spacing: -2px;
-                font-weight: 800;
+                font-size: 60px; 
+                font-family: 'VCR OSD Mono';
+                letter-spacing: -1px;
+                font-weight: 600;
                 animation-name: name;
-                border-right: none;
                 border-style: solid;
+                border-radius: 20px;
                 border-width: 2px;
-                border-color: #D4D4D4;
-                padding: 12px 32px 12px 32px;
+                border-color: white;
+                padding: 16px 40px 16px 40px;
                 background-color: rgb(32,32,32);
+                box-shadow: 0px 0px 12px white;
+                transition: all 0.1s ease-in-out;
+                width: 100%;
+                margin-left: 200px;
+                margin-right: 200px;
             }
+            .name2:hover{
+                transform: translate(-7px, -7px);
+                box-shadow: 0px 0px 20px white;
+            }
+            
         </style>
     </head>
     <body>
@@ -236,7 +262,8 @@
             <div class="timediv"><p class="time"></p>
         </header></div>
 
-        <div class="anim"><div class="namediv"><p class="name">
+        <div class="anim"><div class="namediv"><p class="name" style="
+        text-shadow: 0px 0px 10px white;">
 ███╗   ███╗██╗   ██╗██╗  ██╗ █████╗ ███╗   ███╗███╗   ███╗███████╗██████╗     ███████╗ █████╗ ██╗   ██╗██████╗ 
 ████╗ ████║██║   ██║██║  ██║██╔══██╗████╗ ████║████╗ ████║██╔════╝██╔══██╗    ██╔════╝██╔══██╗██║   ██║██╔══██╗
 ██╔████╔██║██║   ██║███████║███████║██╔████╔██║██╔████╔██║█████╗  ██║  ██║    ███████╗███████║██║   ██║██║  ██║
@@ -249,11 +276,16 @@
         <div class="namediv1">
         <p class="name1" style="
         font-size: 18px;">
-        <span class="und">i</span>
-        <span class="und">like</span> 
-        <span class="und">building</span> 
-        <span class="und">cool</span> 
-        <span class="und">shit.</span></p>
+        <span class="und" style="
+        text-shadow: 0px 0px 30px white;">i</span>
+        <span class="und" style="
+        text-shadow: 0px 0px 30px white;">like</span> 
+        <span class="und" style="
+        text-shadow: 0px 0px 30px white;">building</span> 
+        <span class="und" style="
+        text-shadow: 0px 0px 30px white;">cool</span> 
+        <span class="und" style="
+        text-shadow: 0px 0px 30px white;">shit.</span></p>
         </div>
         </div>
 
