@@ -13,7 +13,6 @@
             }
             .coolimg{
                 background-color: rgb(12,12,12);
-                /* Use quotes and forward slashes for the image path */
                 background-image: url("images/enhanced_Mini process vid of this shot for our recent Polsia animation with bttr_hlf.png");
                 background-repeat: no-repeat;
                 background-position: center;
@@ -34,7 +33,7 @@
                 background-color: #060812;
                 margin: 0;
                 padding-left: auto;
-                padding-right: auto;
+                padding-right: 0;
             }
             .coolimgdiv{
                 object-position: center;
@@ -139,7 +138,7 @@
                 text-decoration: underline;
                 text-decoration-thickness: 1px;
             }
-               .namediv1{
+            .namediv1{
                 width:auto;
                 width: 100%;
                 display:flex;
@@ -149,13 +148,86 @@
                 margin-right:auto;
                 margin-bottom: -20px;
             }
+            .namediv2{
+                width:auto;
+                width: 100%;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                margin-left:auto;
+                margin-right:auto;
+                margin-bottom: -20px;
+                margin-top: 60px;
+                justify-content: left;
+                margin: 0;
+                padding: 0;
+                padding-left: 180px;
+            }
+            .namediv2:hover{
+            
+            }
             .show{
-            color: #D4D4D4;
-            font-family: Consolas;
-            font-size: 16px;
-            text-align: center;
-            font-weight:500;
-            margin-bottom: 6px;
+                color: #D4D4D4;
+                font-family: monospace;
+                font-size: 16px;
+                text-align: center;
+                font-weight:500;
+                    margin-bottom: 6px;
+            }
+            .text{
+                color: #D4D4D4;
+                background-color: rgb(32,32,32);
+                box-shadow: 3px 3px 0 #969696;
+                border-style: solid;
+                display: flex;
+                border-width: 1px;
+                border-color: #969696;
+                padding: 10px 20px 10px 20px;
+                margin-right: 10px;
+                font-family: Helvetica;
+                margin-bottom: 20px;
+                font-size: 16px;
+            }
+            .text:hover{
+
+            }
+            .buttons{
+                padding-left: 220px;
+                display: block;
+                justify-content: left;
+                color:#D4D4D4;
+                flex: 1;
+                margin-left: 40px;
+                margin-top: 20px;
+            }
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+            .block{
+                margin-bottom: 20px;
+            }
+            .name2{
+                color: #D4D4D4;
+                font-family: monospace;
+                font-size: 11px;
+                font-weight: 400;
+                letter-spacing: 0px;
+                text-shadow: 0px 0px 0 rgb(254, 254, 254);
+                text-align: center;
+                display: inline-block;
+                 font-size: 60px; 
+                transform: scaleY(1);
+                font-family: Helvetica;
+                letter-spacing: -2px;
+                font-weight: 800;
+                animation-name: name;
+                border-right: none;
+                border-style: solid;
+                border-width: 2px;
+                border-color: #D4D4D4;
+                padding: 12px 32px 12px 32px;
+                background-color: rgb(32,32,32);
             }
         </style>
     </head>
@@ -187,10 +259,10 @@
 
         <div><div class="namediv1"><h2 style="
             color: #D4D4D4;
-            font-family: Consolas;
+            font-family: monospace;
             font-size: 46px;
             text-align: center;
-            font-weight:500;">
+            font-weight:700;">
         <span class="und">Skills</span> <span class="und">&</span> <span class="und">Interests</span>
         </h2>
         </div>
@@ -201,5 +273,27 @@
         <p class="show"><span class="und">Art</span></p>
         <p class="show"><span class="und">Philosophy</span></p>
         <p class="show"><span class="und">Writing</span></p>
+        <p class="show"><span class="und">Cybersecurity</span></p>
+
+        <div style="
+        margin-top: 60px;">
+            <div class="namediv2">
+        <p class="name2">
+        <span class="und">I</span>
+        <span class="und">make</span>
+        <span class="und">stuff</span>
+        <span class="und">that</span>
+        <span class="und">I</span>
+        <span class="und">like.</span></p></div>
+
+        <div class="buttons">
+            <div class="block">
+                <button class="text"><a target="_blank" href="https://www.youtube.com/@SilentVelocity01">My Hackathons Channel</a></button>
+            </div>
+            <div>
+            <button class="text"><a href="https://www.youtube.com/@FaxOriginal" target="_blank">Channel I'm trying to grow</a></button>
+            </div>
+        </div>
+        </div>
     </body>
 </html>
