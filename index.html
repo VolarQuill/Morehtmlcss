@@ -39,28 +39,23 @@
                 border-color:beige;
                 display: block;
                 max-width: 1150px;
+                min-width: auto;
                 object-position: center;
                 align-items: center;
                 margin: 0 auto;
                 background-size: cover;
-                animation-name: slide;
-                animation-duration: 0.25s;
-                animation-timing-function: ease-out;
-                box-shadow: 0px 0px 30px white;
+                box-shadow: 0px 0px 10px white;
                 border-radius: 20px;
                 animation: pulse 1.3s ease-out infinite;
             }
             @keyframes pulse{
-                from, to{box-shadow: 0px 0px 30px white;}
+                from, to{box-shadow: 0px 0px 10px white;}
                 50%{box-shadow: 0px 0px 10px white;}
             }
             .coolimgdiv{
                 object-position: center;
                 align-items: center;   
                 margin-top: 70px; 
-                animation-name: slide;
-                animation-duration: 0.20s;
-                animation-timing-function: ease-out;
                 margin-bottom: 0px;
                 
             }
@@ -98,14 +93,12 @@
                 margin-right: auto;
                 width: auto;
                 justify-content: center;
-                
             }
             .name{
                 color: #D4D4D4;
                 font-family: monospace;
-                font-size: 13px;
+                font-size: 14px;
                 font-weight: 400;
-                letter-spacing: 0px;
                 padding-top: -10px;
                 padding-bottom: -5px;
                 margin-top: -10px;
@@ -114,14 +107,17 @@
                 white-space: pre-wrap;
                 text-shadow: 0px 0px 5px rgb(254, 254, 254);
                 text-align: center;
-                animation: type1 0.75s step-end infinite;
+                animation: name 1s ease-out infinite;
             }
-                @keyframes type1 {
-                from, to{ border-color: transparent}
-                50% { border-color: #D4D4D4}
+                @keyframes name {
+                from, to{ text-shadow:0px 0px 5px rgb(254, 254, 254);}
+                50% { text-shadow: 0px 0px 15px rgb(254, 254, 254);}
+            }
+            .name:hover{
+                cursor: pointer;
             }
             .line{
-                width: 780px;
+                width: 835px;
                 color: #D4D4D4;
                 box-shadow: 0px 0px 40px white;
             }
@@ -150,7 +146,6 @@
                 text-shadow: 0px 0px 0 rgb(254, 254, 254);
                 text-align: center;
                 display: inline-block;
-                animation-name: type;
                 border-right: 2px solid;
                 animation: type 0.75s step-end infinite;
             }
@@ -164,6 +159,7 @@
             .und:hover{
                 text-decoration: underline;
                 text-decoration-thickness: 1px;
+                cursor:pointer;
             }
             .namediv1{
                 width:auto;
@@ -189,7 +185,7 @@
                 padding: 0;
             }
             .namediv2:hover{
-            
+                
             }
             .show{
                 color: #D4D4D4;
@@ -266,16 +262,53 @@
                 animation: pulse 1.3s ease-out infinite;
                 }
                 @keyframes pulse{
-                from, to{box-shadow: 0px 0px 25px white;}
+                from, to{box-shadow: 0px 0px 16px white;}
                 50%{box-shadow: 0px 0px 10px white;}
             }
             
             .name2:hover{
                 transform: translate(-7px, -7px);
                 box-shadow: 0px 0px 20px white;
-                animation:both;
+                animation:freeze;
             }
-            
+
+            .pinsdiv{
+                object-position: center;
+                align-items: center;
+                display: flex;
+                margin-left: 100px;
+                margin-right: 100px;
+                margin-top: 50px;
+            }
+            .pins{
+                align-items: center;
+                justify-content: center;
+                border-style: solid;
+                object-fit: cover;
+                width: 100%;
+                border-color:#D4D4D4;
+                border-width: 3px;
+                border-radius: 30px;
+                box-shadow: 0px 0px 5px #D4D4D4;
+                animation-name: pulse;
+                animation-timing-function: ease-out;
+                animation: pins ease-out 1s infinite;
+            }
+            @keyframes pins{
+                from, to{ box-shadow: 0px 0px 5px #D4D4D4; }
+                50%{box-shadow: 0px 0px 15px #D4D4D4;}
+            }
+            .pinsdivin{
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                column-gap: 20px;
+            }
+            .pinsdivin1{
+                display: flex;
+                flex: 1;
+                justify-content:space-evenly;
+                flex-direction: row;
+            }
         </style>
     </head>
     <body>
@@ -346,6 +379,43 @@
             <div>
             <button class="text"><a href="https://www.youtube.com/@FaxOriginal" target="_blank">Channel I'm trying to grow</a></button>
             </div>
+            <div><button class="text"><a href="https://devpost.com/rightrider0503?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav&_gl=1*zfis6b*_gcl_au*ODEyMDQ2NTUwLjE3ODM4NTU0Mzk.*_ga*MTE3MjkwOTc1LjE3ODM4NTU0Mzk.*_ga_0YHJK3Y10M*czE3ODY3MjY1MzIkbzQ0JGcxJHQxNzg2NzI3OTM0JGo2MCRsMCRoMA.." target="_blank">My Devpost</a></div></buttom>
+        </div>
+        </div>
+        </div>
+        </div>
+        
+                <div style="
+        margin-top: 60px;">
+            <div class="namediv2">
+        <p class="name2">
+        <span class="und">Pins</span>
+        <span class="und">that</span>
+        <span class="und">I</span>
+        <span class="und">Like</span></p></div>
+    
+        <div class="pinsdiv"><div class="pinsdivin">
+            <img class="pins" style="animation: pins ease-out 0.5s infinite;" src="pins/1010002653975473894.jpg">
+            <img class="pins" style="animation: pins ease-out 0.7s infinite;" src="pins/Ecopunk.jpg">
+            <img class="pins" style="animation: pins ease-out 0.9s infinite;" src="pins/262545853275203268.jpg">
+            <img class="pins" style="animation: pins ease-out 1.1s infinite;" src="pins/1112318807988092615.jpg">
+            <p class="show" style="margin-top: 10px;"><span class="und">i wanna live there.</span></p>
+            <p class="show" style="margin-top: 10px;"><span class="und">dream workspace</span></p>
+            <p class="show" style="margin-top: 10px;"> <span class="und">peace</span></p>
+            <p class="show" style="margin-top: 10px;"> <span class="und">i long for this.</span></p>
+        </div>
+        </div>
+        </div>
+        <div class="pinsdiv"><div class="pinsdivin1">
+        </div>
+        </div>
+
+        <div class="namediv2">
+            <p class="name2">About Me:</p>
+        </div>
+
+        <div class="namediv2">
+        <p class="show">First of all, I like computers, second of all, I like computers. </p>
         </div>
         </div>
     </body>
