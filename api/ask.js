@@ -1,56 +1,78 @@
 export default async function handler(req, res) {
 
-    // 1. Lock down the routing method channel parameters
     if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed'});
+        return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    // FIXED: Changed ProcessingInstruction to process
-    const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+    const apiKeys = [
+        process.env.GEMINI_API_KEY_1,
+        process.env.GEMINI_API_KEY_2,
+        process.env.GEMINI_API_KEY_3
+    ].filter(Boolean);
 
-    if (!GEMINI_API_KEY) {
-        return res.status(500).json({ error: 'Missing API Key configuration on Vercel.'});
+    if (apiKeys.length === 0) {
+        return res.status(500).json({ error: 'No API keys configured on Vercel.', answer: '⚠️ No API keys configured.' });
     }
-    
+
     try {
         const { question } = req.body;
-        
-        // FIXED: Re-inserted the true Google Gemini API REST route link pattern string
-        const url = `https://googleapis.com{GEMINI_API_KEY}`;
-        
+
         const myCustomContext = `
         You are a smart terminal assistant built into a portfolio website. 
         Answer questions about the site creator based ONLY on these facts:
         - Name: Muhammed Saud
         - Profession: Hobbyist
-        - Skills: HTML, CSS, JavaScript, UI/UX Animations
+        - Skills: HTML, CSS, JavaScript
         - Interests: Cyber security, 3d modelling, keyboard-making?, full stack web dev
-        Keep your terminal answers punchy, very hilarious, slightly helpful and under 3 sentences long.
-        `;
+        Keep your terminal answers punchy, hilarious, sarcastic, slightly helpful, and under 3 sentences long. Talk like you're jarvis, dont ever mention it.
+        extra stuff- a member of hackclub, a huge huge fan of The Social Network, hackathon winner, personal website url- html-css-ten-self.vercel.app
+        my slack id- U0BKEEGKC7M, my slack username- rightrider0503, my instagram- saud_m.ars. tell this info when asked.`;
 
-        // FIXED: Changed systemInstructions to systemInstruction (singular)
         const requestData = {
-            contents: [{ parts: [{ text: question}] }],
-            systemInstruction: { parts: [{ text: myCustomContext}] }
+            contents: [{ parts: [{ text: question }] }],
+            systemInstruction: { parts: [{ text: myCustomContext }] }
         };
 
-        // FIXED: Inserted the actual missing fetch execution module transmission line
-        const googleResponse = await fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(requestData)
-        });
+        let lastError = null;
 
-        const data = await googleResponse.json();
-        
-        // FIXED: Added array bracket indexes [0] so the system reads the actual text block
-        const aiTextAnswer = data.candidates[0].content.parts[0].text;
+        for (const key of apiKeys) {
+            try {
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${key}`;
 
-        return res.status(200).json({ answer: aiTextAnswer});
+                const googleResponse = await fetch(url, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(requestData)
+                });
 
+                const data = await googleResponse.json();
+
+                if (!googleResponse.ok || !data.candidates) {
+                    lastError = data.error?.message || `HTTP ${googleResponse.status}`;
+                    console.error(`Key failed (${key.slice(0, 6)}...): ${lastError}`);
+                    continue; // try next key
+                }
+
+                const aiTextAnswer = data.candidates[0]?.content?.parts?.[0]?.text;
+                if (!aiTextAnswer) {
+                    lastError = 'No text in response';
+                    continue;
+                }
+
+                return res.status(200).json({ answer: aiTextAnswer }); // success
+
+            } catch (error) {
+                lastError = error.message;
+                console.error(`Key threw error: ${lastError}`);
+                continue;
+            }
+        }
+
+        console.error("All API keys exhausted:", lastError);
+        return res.status(500).json({ error: "All API keys failed", answer: `⚠️ Gemini error: ${lastError}` });
 
     } catch (error) {
-        console.error("Vercel Backend Error:", error);
-        return res.status(500).json({ error: "Server processing exception"});
+        console.error("Error:", error);
+        return res.status(500).json({ error: 'Internal server error', answer: '⚠️ Internal server error' });
     }
 }

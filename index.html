@@ -248,7 +248,7 @@
                 font-family: 'VCR OSD Mono';
                 margin-bottom: 20px;
                 font-size: 16px;
-                transition: all 0.1s ease-in-out;
+                transition: all 0.1s ease-out;
             }
             .text:hover{
                 transform: translate(-3px, -3px);
@@ -290,7 +290,7 @@
                 padding: 16px 40px 16px 40px;
                 background-color: rgb(32,32,32);
                 box-shadow: 0px 0px 12px white;
-                transition: all 0.1s ease-in-out;
+                transition: all 0.1s ease-out;
                 width: 100%;
                 margin-left: 200px;
                 margin-right: 200px;
@@ -354,17 +354,20 @@
             }
             .terminal{
                 background-color: #000000;
-                border-color: #323232;
+                border-color: #363636;
                 border-width: 1px;
                 display: inline-block;
                 border-style: solid;
                 min-width: 1200px;
+                max-width: 1200px;
                 height: 600px;
                 color: white;
                 font-family: monospace;
                 overflow-y: auto;
                 box-sizing: border-box;
-                padding: 15px;
+                padding: clamp(4px 1vw 20px);
+                padding-top: 10px;
+                
             }
             .termdiv{
                 display: flex;
@@ -377,13 +380,13 @@
             .termdiv1{
                 height: 45px;
                 width: 1201px;
-                background-color: #323232;
+                background-color: #363636;
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
                 border-style: solid;
-                border-color: #323232;
-                border-width: 3px;
+                border-color: #363636;
+                border-width: 0px;
             }
             .termout{
                 display: flex;
@@ -395,9 +398,10 @@
                 font-family: 'VCR OSD Mono';
                 color: #D4D4D4;
                 text-align: center;
-                font-size: 24px;
+                font-size: 30px;
                 font-weight: lighter;
                 padding-top: 9px;
+                text-shadow: 0px 0px 1px white;
             }
             .inputline{
                 display: flex;
@@ -405,12 +409,15 @@
                 align-items: flex-start;
                 width: 100%;
                 height: auto;
+                min-width: 0;
+                padding-right: 0px;
+                max-width: 1150px;
             }
             .prefix{
                 color: #D4D4D4;
                 font-family: monospace;
                 font-size: 16px;
-                white-space: pre-wrap;
+                margin-left: 10px;
             }
             .enter{
                 background-color: black;
@@ -419,15 +426,23 @@
                 border: none;
                 flex-grow: 1;
                 outline: none;
-                font-size: 18px;
+                font-size: 16px;
                 resize:none;
                 margin: 0;
                 padding: 0;
                 overflow: hidden;
                 height: 200px;
+                padding-left: 10px;
             }
             .enter:active{
                 border: none;
+            }
+            .past{
+                color: #D4D4D4;
+                font-family: monospace;
+                font-size: 16px;
+                padding-left: 10px;
+
             }
         </style>
     </head>
@@ -532,10 +547,10 @@
 
         <div class="namediv2">
             <p class="name2" style="width:auto;
-            object-position: center;">About Me:</p>
+            object-position: center;">Ask About Me:</p>
         </div>
         <div class="termout"><div class="termdiv1">
-            <p class="termhead">TERMINAL</p>
+            <p class="termhead">ASK THE TERMINAL.</p>
         </div>
         </div>
         <div class="termdiv"><div class="terminal" id="terminalLog">
@@ -545,7 +560,5 @@
         </div>
         </div>
 
-
-    
     </body>
 </html>

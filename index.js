@@ -1,10 +1,10 @@
 const root = document.documentElement;
 
-// ADD THESE THREE LINES: Your script needs these targets defined at the top
 const userInput = document.getElementById('userInput');
 const terminalLog = document.getElementById('terminalLog');
 const activeInputRow = document.getElementById('activeInputRow');
 
+let isProcessing = false;
 let movementTimer;
 let lastX = -1000;
 let lastY = -1000;
@@ -36,34 +36,54 @@ userInput.addEventListener('keydown', async (e) => {
     if(e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
 
+        if (isProcessing) return;
+
         const question = userInput.value.trim();
         if (!question) return;
-        
+
+        isProcessing = true;
+
         const historyRow = document.createElement('div');
         historyRow.className = 'inputline';
-        historyRow.innerHTML = `<span class="prefix"> PS C:\\Ask\\Something\\About\\Me&gt; </span><span style="color: white;">${question}</span>`;
+        historyRow.innerHTML = `<span class="prefix"> PS C:\\Ask\\Something\\About\\Me&gt; </span><span class="past";">${question}</span>`;
         terminalLog.insertBefore(historyRow, activeInputRow);
 
         userInput.value = '';
-        activeInputRow.style.opacity = '0.4';
+        activeInputRow.style.display = 'none'; // CHANGED: hide entirely instead of dimming
         userInput.disabled = true;
 
-        const answer = await fetchAIResponse(question);
-        const answerRow = document.createElement('div');
-        answerRow.className = 'inputline';
-        answerRow.style.color = '#38ff70';
-        answerRow.style.paddingLeft = '20px';
-        answerRow.style.marginBottom = '15px';
-        answerRow.innerText = answer;
-        
-        // FIXED: Changed 'innerBefore' to 'insertBefore'
-        terminalLog.insertBefore(answerRow, activeInputRow);
-
-        activeInputRow.style.opacity = '1';
-        userInput.disabled = false;
-        userInput.focus();
-
+        const loadingRow = document.createElement('div');
+        loadingRow.className = 'inputline';
+        loadingRow.style.color = '#F44747';
+        loadingRow.style.paddingLeft = '20px';
+        loadingRow.style.fontSize = '16px';
+        loadingRow.style.marginTop = '4px';
+        loadingRow.innerText = 'Reckoning...';
+        terminalLog.insertBefore(loadingRow, activeInputRow);
         terminalLog.scrollTop = terminalLog.scrollHeight;
+
+        try {
+            const answer = await fetchAIResponse(question);
+
+            loadingRow.remove();
+
+            const answerRow = document.createElement('div');
+            answerRow.className = 'inputline';
+            answerRow.style.color = '#38ff70';
+            answerRow.style.paddingLeft = '20px';
+            answerRow.style.marginBottom = '15px';
+            answerRow.style.marginTop = '10px';
+            answerRow.style.fontSize = '16px';
+            answerRow.innerText = answer || '⚠️ No response received.';
+            terminalLog.insertBefore(answerRow, activeInputRow);
+
+        } finally {
+            activeInputRow.style.display = 'flex'; // CHANGED: bring it back (matches .inputline's display:flex)
+            userInput.disabled = false;
+            userInput.focus();
+            terminalLog.scrollTop = terminalLog.scrollHeight;
+            isProcessing = false;
+        }
     }
 });
 
