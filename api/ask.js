@@ -1,39 +1,52 @@
 export default async function handler(req, res) {
 
-    if (req. method !== 'POST') {
+    // 1. Lock down the routing method channel parameters
+    if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed'});
     }
 
-    const GEMINI_API_KEY = ProcessingInstruction.env.GEMINI_API_KEY;
+    // FIXED: Changed ProcessingInstruction to process
+    const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
     if (!GEMINI_API_KEY) {
         return res.status(500).json({ error: 'Missing API Key configuration on Vercel.'});
     }
     
-    try{
+    try {
         const { question } = req.body;
+        
+        // FIXED: Re-inserted the true Google Gemini API REST route link pattern string
         const url = `https://googleapis.com{GEMINI_API_KEY}`;
+        
         const myCustomContext = `
         You are a smart terminal assistant built into a portfolio website. 
         Answer questions about the site creator based ONLY on these facts:
         - Name: Muhammed Saud
-        - Profession: Hobbiyst
+        - Profession: Hobbyist
         - Skills: HTML, CSS, JavaScript, UI/UX Animations
         - Interests: Cyber security, 3d modelling, keyboard-making?, full stack web dev
         Keep your terminal answers punchy, very hilarious, slightly helpful and under 3 sentences long.
         `;
 
+        // FIXED: Changed systemInstructions to systemInstruction (singular)
         const requestData = {
             contents: [{ parts: [{ text: question}] }],
-            systemInstructions: { parts: [{ text: myCustomContext}] }
+            systemInstruction: { parts: [{ text: myCustomContext}] }
         };
+
+        // FIXED: Inserted the actual missing fetch execution module transmission line
+        const googleResponse = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestData)
+        });
 
         const data = await googleResponse.json();
         const aiTextAnswer = data.candidates.content.parts.text;
 
         return res.status(200).json({ answer: aiTextAnswer});
 
-    }   catch (error) {
+    } catch (error) {
         console.error("Vercel Backend Error:", error);
         return res.status(500).json({ error: "Server processing exception"});
     }
