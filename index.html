@@ -15,6 +15,7 @@
             :root {
                 --mouse-x: -1000px;
                 --mouse-y: -1000px;
+                --glow-opacity: 0;
             }
             p{
                 margin:0;
@@ -58,13 +59,14 @@
             /* The mask that creates the flashlight effect */
             mask-image: radial-gradient(circle 70px at var(--mouse-x) var(--mouse-y), black 10%, transparent 100%);
             -webkit-mask-image: radial-gradient(circle 70px at var(--mouse-x) var(--mouse-y), black 10%, transparent 100%);
+
+            opacity: var(--glow-opacity);
+            transition: opacity 0.7s ease;
         }
 
         /* Temporary text just to show the page works and can be clicked */
         body {
-            color: white;
-            font-family: sans-serif;
-            padding: 2rem;
+            padding-bottom: 15vh;
         }
             .coolimg{
                 background-color: rgb(12,12,12);
@@ -350,6 +352,83 @@
                 display: flex;
                 margin-left: 200px;
             }
+            .terminal{
+                background-color: #000000;
+                border-color: #323232;
+                border-width: 1px;
+                display: inline-block;
+                border-style: solid;
+                min-width: 1200px;
+                height: 600px;
+                color: white;
+                font-family: monospace;
+                overflow-y: auto;
+                box-sizing: border-box;
+                padding: 15px;
+            }
+            .termdiv{
+                display: flex;
+                object-position: center;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+                margin-top: 0px;
+            }
+            .termdiv1{
+                height: 45px;
+                width: 1201px;
+                background-color: #323232;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                border-style: solid;
+                border-color: #323232;
+                border-width: 3px;
+            }
+            .termout{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                margin-top: 65px;
+            }
+            .termhead{
+                font-family: 'VCR OSD Mono';
+                color: #D4D4D4;
+                text-align: center;
+                font-size: 24px;
+                font-weight: lighter;
+                padding-top: 9px;
+            }
+            .inputline{
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                width: 100%;
+                height: auto;
+            }
+            .prefix{
+                color: #D4D4D4;
+                font-family: monospace;
+                font-size: 16px;
+                white-space: pre-wrap;
+            }
+            .enter{
+                background-color: black;
+                font-family: monospace;
+                color: #D4D4D4;
+                border: none;
+                flex-grow: 1;
+                outline: none;
+                font-size: 18px;
+                resize:none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                height: 200px;
+            }
+            .enter:active{
+                border: none;
+            }
         </style>
     </head>
     <body>
@@ -455,9 +534,14 @@
             <p class="name2" style="width:auto;
             object-position: center;">About Me:</p>
         </div>
-
-        <div class="namediv2">
-        <p class="about">First of all, I like computers, second of all, I like computers. I </p>
+        <div class="termout"><div class="termdiv1">
+            <p class="termhead">TERMINAL</p>
+        </div>
+        </div>
+        <div class="termdiv"><div class="terminal" id="terminalLog">
+            <div class="inputline" id="activeInputRow">
+                <span class="prefix">PS C:\Ask\Something\About\Me> </span><textarea class="enter" type="text" id="userInput"></textarea>
+            </div></div>
         </div>
         </div>
 
