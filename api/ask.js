@@ -42,9 +42,12 @@ export default async function handler(req, res) {
         });
 
         const data = await googleResponse.json();
-        const aiTextAnswer = data.candidates.content.parts.text;
+        
+        // FIXED: Added array bracket indexes [0] so the system reads the actual text block
+        const aiTextAnswer = data.candidates[0].content.parts[0].text;
 
         return res.status(200).json({ answer: aiTextAnswer});
+
 
     } catch (error) {
         console.error("Vercel Backend Error:", error);
