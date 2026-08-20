@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>3AM Personal Website</title>
+           <meta charset="UTF-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dark Mode Personal Website</title>
+        <script src="index.js" defer></script>
         <style>
             @font-face {
                 font-family: 'VCR OSD Mono';
@@ -9,26 +12,60 @@
                 font-weight: normal;
                 font-style: normal;
             }
-
+            :root {
+                --mouse-x: -1000px;
+                --mouse-y: -1000px;
+            }
             p{
                 margin:0;
                 padding: 0;
 
             }
-            html{
-                background-color: #060812;
-                background-image:   linear-gradient(to right, #363636 2.5px, transparent 2.5px),
-                                    linear-gradient(to bottom, #363636 2.5px, transparent 2.5px),
-                                    linear-gradient(to right, #363636 1px, transparent 1px),
-                                    linear-gradient(to bottom, #363636 1px, transparent 1px);
-                background-size: 200px 200px, 200px 200px, 40px 40px, 40px 40px;
-                background-attachment: fixed;
-                
-            }
-            body{
-                padding-bottom: 100px;
-                
-            }
+        html {
+            background-color: #000000;
+            background-image:   
+                linear-gradient(to right, #282828 3px, transparent 3px),
+                linear-gradient(to bottom, #282828 3px, transparent 3px),
+                linear-gradient(to right, #282828 2px, transparent 2px),
+                linear-gradient(to bottom, #282828 2px, transparent 2px),
+                linear-gradient(to right, #282828 1.2px, transparent 1.2px),
+                linear-gradient(to bottom, #282828 1.2px, transparent 1.2px);
+            background-size: 200px 200px, 200px 200px, 50px 50px, 50px 50px, 12.5px 12.5px, 12.5px 12.5px;
+            background-attachment: fixed;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* The glowing overlay grid */
+        html::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -2;
+            
+            /* Thicker lines with a neon blue color */
+            background-image: 
+                linear-gradient(to right, #D4D4D4 2.5px, transparent 2.5px),
+                linear-gradient(to bottom, #D4D4D4 2.5px, transparent 2.5px),
+                linear-gradient(to right, #D4D4D4 1.7px, transparent 1.7px),
+                linear-gradient(to bottom, #D4D4D4 1.7px, transparent 1.7px),
+                linear-gradient(to right, #D4D4D4 0.5px, transparent 0.5px),
+                linear-gradient(to bottom, #D4D4D4 0.5px, transparent 0.5px);
+            background-size: 200px 200px, 200px 200px, 50px 50px, 50px 50px, 12.5px 12.5px, 12.5px 12.5px;
+            background-attachment: fixed;
+
+            /* The mask that creates the flashlight effect */
+            mask-image: radial-gradient(circle 70px at var(--mouse-x) var(--mouse-y), black 10%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle 70px at var(--mouse-x) var(--mouse-y), black 10%, transparent 100%);
+        }
+
+        /* Temporary text just to show the page works and can be clicked */
+        body {
+            color: white;
+            font-family: sans-serif;
+            padding: 2rem;
+        }
             .coolimg{
                 background-color: rgb(12,12,12);
                 background-image: url("images/enhanced_Mini process vid of this shot for our recent Polsia animation with bttr_hlf.png");
@@ -237,17 +274,13 @@
             }
             .name2{
                 color: #D4D4D4;
-                font-size: 11px;
-                font-weight: 400;
-                letter-spacing: 0px;
-                text-shadow: 0px 0px 0 rgb(254, 254, 254);
+                text-shadow: 0px 0px 1px rgb(254, 254, 254);
                 text-align: center;
                 display: inline-block;
                 font-size: 60px; 
                 font-family: 'VCR OSD Mono';
                 letter-spacing: -1px;
                 font-weight: 600;
-                animation-name: name;
                 border-style: solid;
                 border-radius: 20px;
                 border-width: 2px;
@@ -308,6 +341,14 @@
                 flex: 1;
                 justify-content:space-evenly;
                 flex-direction: row;
+            }
+            .about{
+                font-family: 'VCR OSD Mono';
+                color: #D4D4D4;
+                font-size: 18px;
+                text-align: center;
+                display: flex;
+                margin-left: 200px;
             }
         </style>
     </head>
@@ -374,7 +415,7 @@
 
         <div class="buttons">
             <div class="block">
-                <button class="text"><a target="_blank" href="https://www.youtube.com/@SilentVelocity01">My Hackathons Channel</a></button>
+                <div><button class="text"><a target="_blank" href="https://www.youtube.com/@SilentVelocity01">My Hackathons Channel</a></button></div>
             </div>
             <div>
             <button class="text"><a href="https://www.youtube.com/@FaxOriginal" target="_blank">Channel I'm trying to grow</a></button>
@@ -411,12 +452,16 @@
         </div>
 
         <div class="namediv2">
-            <p class="name2">About Me:</p>
+            <p class="name2" style="width:auto;
+            object-position: center;">About Me:</p>
         </div>
 
         <div class="namediv2">
-        <p class="show">First of all, I like computers, second of all, I like computers. </p>
+        <p class="about">First of all, I like computers, second of all, I like computers. I </p>
         </div>
         </div>
+
+
+    
     </body>
 </html>
