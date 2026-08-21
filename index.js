@@ -105,3 +105,25 @@ async function fetchAIResponse(userQuestion) {
     }
 }
 
+window.addEventListener("DOMContentLoaded", () => {
+    const song = document.getElementById("song");
+    const imgButton = document.getElementById("songbutton");
+
+    song.volume = 0.5;
+
+    window.toggleMusic = function() {
+        if (song.paused) {
+            song.play()
+                .then(() => {
+                    imgButton.src = "images/1067282812327490052.jpg";
+                })
+                .catch(error => {
+                    console.error("Playback blocked by browser settings:", error);
+                });
+        } else {
+            song.pause();
+            imgButton.src = "images/1067282812327490052.jpg"
+        }
+    }
+});
+

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+    <head>
+           <meta charset="UTF-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dark Mode Personal Website</title>
+        <script src="index.js" defer></script>
+        <style>
+            @font-face {
+                font-family: 'VCR OSD Mono';
+                src: url(VCR_OSD_MONO_1.001.ttf) format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+            :root {
+                --mouse-x: -1000px;
+                --mouse-y: -1000px;
+                --glow-opacity: 0;
+            }
+            p{
+                margin:0;
+                padding: 0;
+
+            }
+        html {
+            background-color: #000000;
+            background-image:   
+                linear-gradient(to right, #282828 3px, transparent 3px),
+                linear-gradient(to bottom, #282828 3px, transparent 3px),
+                linear-gradient(to right, #282828 2px, transparent 2px),
+                linear-gradient(to bottom, #282828 2px, transparent 2px),
+                linear-gradient(to right, #282828 1.2px, transparent 1.2px),
+                linear-gradient(to bottom, #282828 1.2px, transparent 1.2px);
+            background-size: 200px 200px, 200px 200px, 50px 50px, 50px 50px, 12.5px 12.5px, 12.5px 12.5px;
+            background-attachment: fixed;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* The glowing overlay grid */
+        html::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -2;
+            
+            /* Thicker lines with a neon blue color */
+            background-image: 
+                linear-gradient(to right, #D4D4D4 2.5px, transparent 2.5px),
+                linear-gradient(to bottom, #D4D4D4 2.5px, transparent 2.5px),
+                linear-gradient(to right, #D4D4D4 1.7px, transparent 1.7px),
+                linear-gradient(to bottom, #D4D4D4 1.7px, transparent 1.7px),
+                linear-gradient(to right, #D4D4D4 0.5px, transparent 0.5px),
+                linear-gradient(to bottom, #D4D4D4 0.5px, transparent 0.5px);
+            background-size: 200px 200px, 200px 200px, 50px 50px, 50px 50px, 12.5px 12.5px, 12.5px 12.5px;
+            background-attachment: fixed;
+
+            /* The mask that creates the flashlight effect */
+            mask-image: radial-gradient(circle 70px at var(--mouse-x) var(--mouse-y), black 10%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle 70px at var(--mouse-x) var(--mouse-y), black 10%, transparent 100%);
+
+            opacity: var(--glow-opacity);
+            transition: opacity 0.7s ease;
+        }
+
+        /* Temporary text just to show the page works and can be clicked */
+        body {
+            padding-bottom: 15vh;
+        }
+            .coolimg{
+                background-color: rgb(12,12,12);
+                background-image: url("images/enhanced_Mini process vid of this shot for our recent Polsia animation with bttr_hlf.png");
+                background-repeat: no-repeat;
+                background-position: center;
+                height: 500px;
+                border-style: dashed;
+                border-color:beige;
+                display: block;
+                max-width: 1150px;
+                min-width: auto;
+                object-position: center;
+                align-items: center;
+                margin: 0 auto;
+                background-size: cover;
+                box-shadow: 0px 0px 10px white;
+                border-radius: 20px;
+                animation: pulse 1.3s ease-out infinite;
+            }
+            @keyframes pulse{
+                from, to{box-shadow: 0px 0px 10px white;}
+                50%{box-shadow: 0px 0px 10px white;}
+            }
+            .coolimgdiv{
+                object-position: center;
+                align-items: center;   
+                margin-top: 70px; 
+                margin-bottom: 0px;
+                
+            }
+            .time{
+                color: rgb(0, 255, 0);
+                font-family: Morganite;
+                letter-spacing: 0px;
+                text-decoration: dashed;
+                font-size: 50px;
+                font-weight:lighter;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .timediv{
+                object-position: center;
+                align-items: center;
+                display: flex;
+                flex: 1;
+            }
+            @keyframes slide {
+                from{
+                    transform: translateY(15%);
+                    opacity: 0;
+                }
+                to{
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+            .namediv{
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+                margin-left: auto;
+                margin-right: auto;
+                width: auto;
+                justify-content: center;
+            }
+            .name{
+                color: #D4D4D4;
+                font-family: monospace;
+                font-size: 14px;
+                font-weight: 400;
+                padding-top: -10px;
+                padding-bottom: -5px;
+                margin-top: -10px;
+                margin-bottom: -40px;
+                transform: scaleY(0.8);
+                white-space: pre-wrap;
+                text-shadow: 0px 0px 5px rgb(254, 254, 254);
+                text-align: center;
+                animation: name 1s ease-out infinite;
+            }
+                @keyframes name {
+                from, to{ text-shadow:0px 0px 5px rgb(254, 254, 254);}
+                50% { text-shadow: 0px 0px 15px rgb(254, 254, 254);}
+            }
+            .name:hover{
+                cursor: pointer;
+            }
+            .line{
+                width: 835px;
+                color: #D4D4D4;
+                box-shadow: 0px 0px 40px white;
+            }
+            .anim{
+                animation-name: slide1;
+                animation-duration: 0.20s;
+                animation-timing-function: ease-out;
+                padding-bottom: 50px;
+            }
+            @keyframes slide1{
+                from{
+                    transform: translateY(200%);
+                    opacity: 0;
+                }
+                to{
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+                .name1{
+                color: #D4D4D4;
+                font-family: monospace;
+                font-size: 11px;
+                font-weight: 400;
+                letter-spacing: 0px;
+                text-shadow: 0px 0px 0 rgb(254, 254, 254);
+                text-align: center;
+                display: inline-block;
+                border-right: 2px solid;
+                animation: type 0.75s step-end infinite;
+            }
+                @keyframes type {
+                from, to{ border-color: transparent}
+                50% { border-color: #D4D4D4}
+            }
+            .und{
+                text-shadow: 0px 0px 2px white;
+            }
+            .und:hover{
+                text-decoration: underline;
+                text-decoration-thickness: 1px;
+                cursor:pointer;
+            }
+            .namediv1{
+                width:auto;
+                width: 100%;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                margin-left:auto;
+                margin-right:auto;
+                margin-bottom: -20px;
+            }
+            .namediv2{
+                width:auto;
+                width: 100%;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                margin-left:auto;
+                margin-right:auto;
+                margin-bottom: -20px;
+                margin-top: 60px;
+                justify-content: left;
+                padding: 0;
+            }
+            .namediv2:hover{
+                
+            }
+            .show{
+                color: #D4D4D4;
+                font-family: 'VCR OSD Mono';
+                font-size: 16px;
+                text-align: center;
+                font-weight:500;
+                    margin-bottom: 6px;
+            }
+            .text{
+                color: #D4D4D4;
+                background-color: rgb(32,32,32);
+                box-shadow: 0px 0px 10px #969696;
+                border-style: solid;
+                display: flex;
+                border-width: 1px;
+                border-color: white;
+                border-radius: 8px;
+                padding: 10px 20px 10px 20px;
+                margin-right: 10px;
+                font-family: 'VCR OSD Mono';
+                margin-bottom: 20px;
+                font-size: 16px;
+                transition: all 0.1s ease-out;
+            }
+            .text:hover{
+                transform: translate(-3px, -3px);
+                box-shadow: 0px 0px 17px white;
+            }
+            text:active{
+                transform: translate(3px, 3px);
+                box-shadow: 0px 0px 0px;
+            }
+            .buttons{
+                padding-left: 220px;
+                display: block;
+                justify-content: left;
+                color:#D4D4D4;
+                flex: 1;
+                margin-left: 40px;
+                margin-top: 50px;
+            }
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+            .block{
+                margin-bottom: 20px;
+            }
+            .name2{
+                color: #D4D4D4;
+                text-shadow: 0px 0px 1px rgb(254, 254, 254);
+                text-align: center;
+                display: inline-block;
+                font-size: 60px; 
+                font-family: 'VCR OSD Mono';
+                letter-spacing: -1px;
+                font-weight: 600;
+                border-style: solid;
+                border-radius: 20px;
+                border-width: 2px;
+                border-color: white;
+                padding: 16px 40px 16px 40px;
+                background-color: rgb(32,32,32);
+                box-shadow: 0px 0px 12px white;
+                transition: all 0.1s ease-out;
+                width: 100%;
+                margin-left: 200px;
+                margin-right: 200px;
+                animation: pulse 1.3s ease-out infinite;
+                }
+                @keyframes pulse{
+                from, to{box-shadow: 0px 0px 16px white;}
+                50%{box-shadow: 0px 0px 10px white;}
+            }
+            
+            .name2:hover{
+                transform: translate(-7px, -7px);
+                box-shadow: 0px 0px 20px white;
+                animation:freeze;
+            }
+
+            .pinsdiv{
+                object-position: center;
+                align-items: center;
+                display: flex;
+                margin-left: 100px;
+                margin-right: 100px;
+                margin-top: 50px;
+            }
+            .pins{
+                align-items: center;
+                justify-content: center;
+                border-style: solid;
+                object-fit: cover;
+                width: 100%;
+                border-color:#D4D4D4;
+                border-width: 3px;
+                border-radius: 30px;
+                box-shadow: 0px 0px 5px #D4D4D4;
+                animation-name: pulse;
+                animation-timing-function: ease-out;
+                animation: pins ease-out 1s infinite;
+                transition: all 0.1s;             
+            }
+            .pins:hover{
+
+            }
+            @keyframes pins{
+                from, to{ box-shadow: 0px 0px 5px #D4D4D4; }
+                50%{box-shadow: 0px 0px 15px #D4D4D4;}
+            }
+            .pinsdivin{
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                column-gap: 40px;
+            }
+            .pinsdivin1{
+                display: flex;
+                flex: 1;
+                justify-content:space-evenly;
+                flex-direction: row;
+            }
+            .about{
+                font-family: 'VCR OSD Mono';
+                color: #D4D4D4;
+                font-size: 18px;
+                text-align: center;
+                display: flex;
+                margin-left: 200px;
+            }
+            .terminal{
+                background-color: #000000;
+                border-color: #363636;
+                border-width: 1px;
+                display: inline-block;
+                border-style: solid;
+                min-width: 1200px;
+                max-width: 1200px;
+                height: 600px;
+                color: white;
+                font-family: monospace;
+                overflow-y: auto;
+                box-sizing: border-box;
+                padding: clamp(4px 1vw 20px);
+                padding-top: 10px;
+                
+            }
+            .termdiv{
+                display: flex;
+                object-position: center;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+                margin-top: 0px;
+            }
+            .termdiv1{
+                height: 45px;
+                width: 1201px;
+                background-color: #363636;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                border-style: solid;
+                border-color: #363636;
+                border-width: 0px;
+            }
+            .termout{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                margin-top: 65px;
+            }
+            .termhead{
+                font-family: 'VCR OSD Mono';
+                color: #D4D4D4;
+                text-align: center;
+                font-size: 30px;
+                font-weight: lighter;
+                padding-top: 9px;
+                text-shadow: 0px 0px 1px white;
+            }
+            .inputline{
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                width: 100%;
+                height: auto;
+                min-width: 0;
+                padding-right: 0px;
+                max-width: 1150px;
+            }
+            .prefix{
+                color: #D4D4D4;
+                font-family: monospace;
+                font-size: 16px;
+                margin-left: 10px;
+            }
+            .enter{
+                background-color: black;
+                font-family: monospace;
+                color: #D4D4D4;
+                border: none;
+                flex-grow: 1;
+                outline: none;
+                font-size: 16px;
+                resize:none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                height: 200px;
+                padding-left: 10px;
+            }
+            .enter:active{
+                border: none;
+            }
+            .past{
+                color: #D4D4D4;
+                font-family: monospace;
+                font-size: 16px;
+                padding-left: 10px;
+            }
+            .sticker1{
+                position: absolute;
+                height: 160px;
+                width: 160px;
+                transform: rotate(-9deg);
+                bottom: 2280px;
+                left: 48px;
+                transition: all 0.1s;
+            }
+            .sticker1:hover{
+                transform: rotate(-17deg);
+                height: 180px;
+                width: 180px;
+            }
+            .sticker2{
+                position: absolute;
+                height: 200px;
+                width: 200px;
+                transform: rotate(-9deg);
+                bottom: 2050px;
+                left: 48px;
+                transition: all 0.1s;
+            }
+            .sticker2:hover{
+                transform: rotate(-18deg);
+                height: 230px;
+                width: 230px;
+            }
+            .sticker3{
+                position: absolute;
+                height: 220px;
+                width: 220px;
+                transform: rotate(9deg);
+                bottom: 2280px;
+                right: 48px;
+                transition: all 0.1s;
+                background: transparent;
+                border-radius: 100%;
+            }
+            .sticker3:hover{
+                transform: rotate(17deg);
+                height: 230px;
+                width: 230px;
+            }
+            .sticker4{
+                position: absolute;
+                height: 190px;
+                width: 190px;
+                transform: rotate(9deg);
+                bottom: 2050px;
+                right: 48px;
+                transition: all 0.1s;
+            }
+            .sticker4:hover{
+                transform: rotate(17deg);
+                height: 220px;
+                width: 220px;
+            }
+            .sticker5{
+                position: absolute;
+                height: 320px;
+                width: 320px;
+                transform: rotate(0deg);
+                bottom: 1660px;
+                right: 570px;
+                transition: all 0.1s;
+            }
+            .sticker5:hover{
+                transform: rotate(0deg);
+                height: 330px;
+                width: 330px;
+            }
+            .sticker6{
+                position: absolute;
+                height: 270px;
+                width: 270px;
+                transform: rotate(0deg);
+                bottom: 700px;
+                right: 470px;
+                transition: all 0.1s;
+            }
+            .sticker6:hover{
+                height: 300px;
+                width: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="coolimgdiv"><header class="coolimg">
+            <div class="timediv"><p class="time"></p>
+        </header></div>
+
+        <div class="anim"><div class="namediv"><p class="name" style="
+        text-shadow: 0px 0px 10px white;">
+███╗   ███╗██╗   ██╗██╗  ██╗ █████╗ ███╗   ███╗███╗   ███╗███████╗██████╗     ███████╗ █████╗ ██╗   ██╗██████╗ 
+████╗ ████║██║   ██║██║  ██║██╔══██╗████╗ ████║████╗ ████║██╔════╝██╔══██╗    ██╔════╝██╔══██╗██║   ██║██╔══██╗
+██╔████╔██║██║   ██║███████║███████║██╔████╔██║██╔████╔██║█████╗  ██║  ██║    ███████╗███████║██║   ██║██║  ██║
+██║╚██╔╝██║██║   ██║██╔══██║██╔══██║██║╚██╔╝██║██║╚██╔╝██║██╔══╝  ██║  ██║    ╚════██║██╔══██║██║   ██║██║  ██║
+██║ ╚═╝ ██║╚██████╔╝██║  ██║██║  ██║██║ ╚═╝ ██║██║ ╚═╝ ██║███████╗██████╔╝    ███████║██║  ██║╚██████╔╝██████╔╝
+╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝     ╚═╝╚══════╝╚═════╝     ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ 
+                                                                                                                                                                                                                                           
+        </p>
+        <hr class="line"></div>
+        <div class="namediv1">
+        <p class="name1" style="
+        font-size: 18px;">
+        <span class="und" style="
+        text-shadow: 0px 0px 30px white;">i</span>
+        <span class="und" style="
+        text-shadow: 0px 0px 30px white;">like</span> 
+        <span class="und" style="
+        text-shadow: 0px 0px 30px white;">building</span> 
+        <span class="und" style="
+        text-shadow: 0px 0px 30px white;">cool</span> 
+        <span class="und" style="
+        text-shadow: 0px 0px 30px white;">shit.</span></p>
+        </div>
+        </div>
+
+        <div><div class="namediv1"><h2 style="
+            color: #D4D4D4;
+            font-family: monospace;
+            font-size: 46px;
+            text-align: center;
+            font-weight:700;">
+        <span class="und">Skills</span> <span class="und">&</span> <span class="und">Interests</span>
+        </h2>
+        </div>
+        <p class="show"><span class="und">Video Editing</span></p>
+        <p class="show"><span class="und">Programming</span></p>
+        <p class="show"><span class="und">Hackathons</span></p>
+        <p class="show"><span class="und">Learning Random Tech Skills</span></p>
+        <p class="show"><span class="und">Art</span></p>
+        <p class="show"><span class="und">Philosophy</span></p>
+        <p class="show"><span class="und">Writing</span></p>
+        <p class="show"><span class="und">Cybersecurity</span></p>
+
+        <div class="polaroidiv">
+            <div class="polaroid"><img class="sticker1" src="images/8-Bit Vs Code Sticker.png"> </div>
+            <div class="polaroid"><img class="sticker2" src="images/removed-background (1).png"></div>
+            <div class="polaroid"><img class="sticker3" src="images/removed-background.png"></div>
+            <div class="polaroid"><img class="sticker4" src="images/removed-background (4).png"></div>
+        </div>
+
+        <div style="
+        margin-top: 60px;">
+            <div class="namediv2">
+        <p class="name2">
+        <span class="und">I</span>
+        <span class="und">make</span>
+        <span class="und">stuff</span>
+        <span class="und">that</span>
+        <span class="und">I</span>
+        <span class="und">like.</span></p></div>
+
+        <div class="buttons">
+            <div class="block">
+                <div><button class="text"><a target="_blank" href="https://www.youtube.com/@SilentVelocity01">My Hackathons Channel</a></button></div>
+            </div>
+            <div>
+            <button class="text"><a href="https://www.youtube.com/@FaxOriginal" target="_blank">Channel I'm trying to grow</a></button>
+            </div>
+            <div><button class="text"><a href="https://devpost.com/rightrider0503?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav&_gl=1*zfis6b*_gcl_au*ODEyMDQ2NTUwLjE3ODM4NTU0Mzk.*_ga*MTE3MjkwOTc1LjE3ODM4NTU0Mzk.*_ga_0YHJK3Y10M*czE3ODY3MjY1MzIkbzQ0JGcxJHQxNzg2NzI3OTM0JGo2MCRsMCRoMA.." target="_blank">My Devpost</a></div></buttom>
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class="polaroid"><img class="sticker5" src="images/removed-background (6).png"></div>
+        
+                <div style="
+        margin-top: 60px;">
+            <div class="namediv2">
+        <p class="name2">
+        <span class="und">Pins</span>
+        <span class="und">that</span>
+        <span class="und">I</span>
+        <span class="und">Like</span></p></div>
+    
+        <div class="pinsdiv"><div class="pinsdivin">
+            <img class="pins" style="animation: pins ease-out 0.5s infinite;" src="pins/1010002653975473894.jpg">
+            <img class="pins" style="animation: pins ease-out 0.7s infinite;" src="pins/Ecopunk.jpg">
+            <img class="pins" style="animation: pins ease-out 0.9s infinite;" src="pins/262545853275203268.jpg">
+            <img class="pins" style="animation: pins ease-out 1.1s infinite;" src="pins/1112318807988092615.jpg">
+            <p class="show" style="margin-top: 10px;"><span class="und">i wanna live there.</span></p>
+            <p class="show" style="margin-top: 10px;"><span class="und">dream workspace</span></p>
+            <p class="show" style="margin-top: 10px;"> <span class="und">peace</span></p>
+            <p class="show" style="margin-top: 10px;"> <span class="und">i long for this.</span></p>
+        </div>
+        </div>
+        </div>
+        <div class="pinsdiv"><div class="pinsdivin1">
+        </div>
+        </div>
+
+        <div class="namediv2">
+            <p class="name2" style="width:auto;
+            object-position: center;">Ask About Me:</p>
+        </div>
+        <div class="termout"><div class="termdiv1">
+            <p class="termhead">ASK THE TERMINAL.</p>
+        </div>
+        </div>
+        <div class="polaroid"><img class="sticker6" src="images/removed-background (2).png"></div>
+        <div class="termdiv"><div class="terminal" id="terminalLog">
+            <div class="inputline" id="activeInputRow">
+                <span class="prefix">PS C:\Ask\Something\About\Me> </span><textarea class="enter" type="text" id="userInput"></textarea>
+            </div></div>
+        </div>
+        </div>
+
+    </body>
+</html>
