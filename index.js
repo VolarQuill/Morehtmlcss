@@ -49,7 +49,7 @@ userInput.addEventListener('keydown', async (e) => {
         terminalLog.insertBefore(historyRow, activeInputRow);
 
         userInput.value = '';
-        activeInputRow.style.display = 'none'; // CHANGED: hide entirely instead of dimming
+        activeInputRow.style.display = 'none'; 
         userInput.disabled = true;
 
         const loadingRow = document.createElement('div');
@@ -64,7 +64,7 @@ userInput.addEventListener('keydown', async (e) => {
 
         try {
             const answer = await fetchAIResponse(question);
-
+            const textToType = answer || 'No Response Received';
             loadingRow.remove();
 
             const answerRow = document.createElement('div');
@@ -74,11 +74,28 @@ userInput.addEventListener('keydown', async (e) => {
             answerRow.style.marginBottom = '15px';
             answerRow.style.marginTop = '10px';
             answerRow.style.fontSize = '16px';
-            answerRow.innerText = answer || '⚠️ No response received.';
+            answerRow.innerText = answer || 'No response received.';
             terminalLog.insertBefore(answerRow, activeInputRow);
 
+            await new Promise((resolve) => {
+                let index = 0;
+                function type () {
+                    if (index < textToType.length) {
+                        answerRow.innerHTML += textToType.charAt(index);
+                        index++;
+                        terminalLog.scrollTop = terminalLog.scrollHeight;
+                        setTimeout(type, 30);
+                    } else {
+                        resolve();
+                    }
+                } 
+                type();
+            });
+        } catch (error) {
+            console.error("Processing error:", error);
+
         } finally {
-            activeInputRow.style.display = 'flex'; // CHANGED: bring it back (matches .inputline's display:flex)
+            activeInputRow.style.display = 'flex';
             userInput.disabled = false;
             userInput.focus();
             terminalLog.scrollTop = terminalLog.scrollHeight;
@@ -89,7 +106,7 @@ userInput.addEventListener('keydown', async (e) => {
 
 async function fetchAIResponse(userQuestion) {
     try {
-        const response = await fetch("/api/ask", {
+            const response = await fetch("/api/ask", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -106,10 +123,10 @@ async function fetchAIResponse(userQuestion) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    const song = document.getElementById("song");
+    const song = document.getElementById("song"); 
     const imgButton = document.getElementById("songbutton");
 
-    song.volume = 0.5;
+    song.volume = 0.7;
 
     window.toggleMusic = function() {
         if (song.paused) {
@@ -124,6 +141,26 @@ window.addEventListener("DOMContentLoaded", () => {
             song.pause();
             imgButton.src = "images/1067282812327490052.jpg"
         }
-    }
-});
+    };
 
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.12
+    };
+
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+    const elementsToAnimate = document.querySelectorAll('.reveal-on-scroll');
+    elementsToAnimate.forEach(element => {
+        scrollObserver.observe(element);
+    });
+
+});
