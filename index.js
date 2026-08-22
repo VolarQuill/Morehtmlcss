@@ -70,7 +70,23 @@ window.addEventListener('scroll', () => {
         music: "Scroll up and hit play on the music player — full playlist is under 'Music that I Like'."
     };
 
-    async function runCommand(question) {
+    async function fetchAIResponse(question) {                  //AI response terminal
+        const response = await fetch('api/ask.js', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ question })
+        });
+
+        const data = await responsee.json();
+
+        if(!response.ok) {
+            throw new Error(data.error || `HTTP ${response.status}`);
+        }
+
+        return data.answer;
+    }
+
+    async function runCommand(question) {               //questions terminal
         if (isProcessing) return;
         if(!question) return;
 
@@ -83,7 +99,7 @@ window.addEventListener('scroll', () => {
             userInput.value = '';
             return;
         }
-        
+            
         isProcessing = true;
 
         try{
@@ -108,7 +124,14 @@ window.addEventListener('scroll', () => {
 
             const textToType = localCommands.hasOwnProperty(lower)
                 ? localCommands[lower]
-                : (await fetchAIResponse(question)) || 'No Response Received';
+                : await (async () => {
+                    try {
+                        return (await fetchAIResponse(question)) || 'No Response Received';
+                    } catch (err) {
+                        console.error('AI fetch failed:', err);
+                        return 'Something broke trying to Reach the AI. Try Again later.';
+                    }
+                })();
 
             loadingRow.remove();
 
@@ -134,7 +157,7 @@ window.addEventListener('scroll', () => {
                     }   else {
                         resolve();
                     }
-                }
+                }dawd
                 type();
             }); 
         } catch (error) {
@@ -148,7 +171,7 @@ window.addEventListener('scroll', () => {
         }
     }
 
-userInput.addEventListener('keydown', async (e) => {           //--Terminal stuff
+userInput.addEventListener('keydown', async (e) => {           //--Terminal stuff Enter key
     if(e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
         runCommand(userInput.value.trim());
