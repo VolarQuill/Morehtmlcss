@@ -4,6 +4,37 @@ const userInput = document.getElementById('userInput');
 const terminalLog = document.getElementById('terminalLog');
 const activeInputRow = document.getElementById('activeInputRow');
 
+ document.querySelectorAll('.name2').forEach((card) => {
+    function handleMove(e) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height /2;
+        const maxTilt = 14; //Degrees
+
+        const tiltY = ((centerY - y) / centerY) * maxTilt;
+        const tiltX = ((x - centerX) / centerX) * maxTilt;
+
+        card.style.setProperty('--tilt-y', `${tiltY}deg`);
+        card.style.setProperty('--tilt-x', `${tiltX}deg`);
+
+        card.style.setProperty('--glow-x', `${(x / rect.width) * 100}%`);
+        card.style.setProperty('--glow-y', `${(y / rect.height) * 100}%`);
+        card.style.setProperty('--glow-opacity', '1');
+    }
+
+    function resetCard() {
+        card.style.setProperty('--tilt-x', '0deg');
+        card.style.setProperty('--tilt-y', '0deg');
+        card.style.setProperty('--glow-opacity', '0');
+    }
+
+    card.addEventListener('mousemove', handleMove);
+    card.addEventListener('mouseleave', resetCard);
+});
+
 let isProcessing = false;
 let movementTimer;
 let lastX = -1000;

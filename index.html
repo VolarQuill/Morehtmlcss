@@ -21,7 +21,7 @@
             :root {
                 --mouse-x: -1000px;
                 --mouse-y: -1000px;
-                --glow-opacity: 0;
+                --glow-opacity: 1;
                 --marquee-speed: 20s;
             }
             p{
@@ -69,6 +69,18 @@
             mask-image: radial-gradient(circle 70px at var(--mouse-x) var(--mouse-y), black 10%, transparent 100%);
             -webkit-mask-image: radial-gradient(circle 70px at var(--mouse-x) var(--mouse-y), black 10%, transparent 100%);
 
+            opacity: var(--glow-opacity);
+            transition: opacity 0.7s ease;
+        }
+        
+        html::after{
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(circle 250px at var(--mouse-x) var(--mouse-y), var(--cursor-glow-color), transparent 70%);
+            mix-blend-mode: screen;
             opacity: var(--glow-opacity);
             transition: opacity 0.7s ease;
         }
@@ -311,7 +323,7 @@
                 border-radius: 20px;
                 border-width: 2px;
                 border-color: white;
-                padding: clamp(8px, 2vw, 16px) clamp(16px, 4vw, 40px);
+                padding: clamp(20px, 8vw, 28px) clamp(18px, 4vw, 44px);
                 background-color: rgb(32,32,32);
                 box-shadow: 0px 0px 12px white;
                 transition: all 0.1s ease-out;
@@ -322,8 +334,14 @@
                 transform: rotate(0deg);
                 }
                 .name2::before{
-                    background: radial-gradient(circle at var(--glow-x) var(--glow-y), rgba(255, 255, 255, 0.45), transparent 60%);
+                    background: radial-gradient(circle at var(--glow-x) var(--glow-y), rgba(56, 255, 112, 0.5), rgba(80, 160, 255, 0.35), transparent 0%);
                     opacity: var(--glow-opacity);
+                    inset: 0;
+                    position: absolute;
+                    content: '';
+                    border-radius: inherit;
+                    transition: opacity 0.2s ease-out;
+                    pointer-events: none;
                 }
                 @keyframes pulse{
                 from, to{box-shadow: 0px 0px 16px white;}
@@ -498,11 +516,11 @@
             }
             .sticker1{
                 position: absolute;
-                height: clamp(110px, 14vw, 160px);
-                width: clamp(110px, 14vw, 160px);
+                height: clamp(120px, 15vw, 170px);
+                width: clamp(120px, 15vw, 170px);
                 transform: rotate(-9deg);
-                top: -3vw;
-                left: 2vw;
+                top: 40vw;
+                left: 3vw;
                 transition: all 0.1s;
             }
             .sticker1:hover{
@@ -517,7 +535,7 @@
                 height: clamp(160px, 20vw, 220px);
                 width: clamp(160px, 20vw, 220px);
                 transform: rotate(-9deg);
-                top: 28%;
+                top: 26%;
                 left: 2%;
                 transition: all 0.1s;
             }
@@ -533,7 +551,7 @@
                 height: clamp(160px, 21vw, 230px);
                 width: clamp(160px, 21vw, 230px);
                 transform: rotate(9deg);
-                top: 20%;
+                top: 18%;
                 right: 2%;
                 transition: all 0.1s;
                 background: transparent;
@@ -551,7 +569,7 @@
                 height: clamp(150px, 18vw, 210px);
                 width: clamp(150px, 18vw, 210px);
                 transform: rotate(9deg);
-                top: 10%;
+                top: 26%;
                 right: 2%;
                 transition: all 0.1s;
             }
@@ -658,6 +676,25 @@
                 height: 75px;
                 bottom: 2342px;
                 left: 466px;
+            }
+            .sticker10{
+                position: absolute;
+                height: clamp(120px, 15vw, 160px);
+                width: clamp(120px, 15vw, 160px);
+                transform: rotate(0deg);
+                top: 33%;
+                transition: all 0.1s;
+                right: 85%;
+            }
+            .sticker10:hover{
+                transform: rotate(9deg);
+                cursor: pointer;
+                height: clamp(140px, 17vw, 190px);
+                width: clamp(140px, 17vw, 190px);
+            }
+            .sticker10:active{
+                height: clamp(120px, 15vw, 160px);
+                width: clamp(120px, 15vw, 160px);
             }
             .box{
                 display: inline-flex;
@@ -858,6 +895,7 @@
             <img class="sticker2 reveal-on-scroll fade-up" src="images/removed-background (1).png">
             <img class="sticker3 reveal-on-scroll fade-up" src="images/removed-background.png">
             <img class="sticker4 reveal-on-scroll fade-up" src="images/removed-background (4).png">
+            <img class="sticker10 reveal-on-scroll fade-up" src="images/removed-background (12) (1).png">
 
              <div class="namediv2" style="margin-bottom: -50px;">
         <p class="name2 reveal-on-scroll fade-up">
