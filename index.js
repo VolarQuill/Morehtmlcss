@@ -96,6 +96,7 @@ userInput.addEventListener('keydown', async (e) => {
         try {
             const answer = await fetchAIResponse(question);
             const textToType = answer || 'No Response Received';
+
             loadingRow.remove();
 
             const answerRow = document.createElement('div');
@@ -105,7 +106,8 @@ userInput.addEventListener('keydown', async (e) => {
             answerRow.style.marginBottom = '15px';
             answerRow.style.marginTop = '10px';
             answerRow.style.fontSize = '16px';
-            answerRow.innerText = answer || 'No response received.';
+
+           answerRow.textContent = '';
             terminalLog.insertBefore(answerRow, activeInputRow);
 
             await new Promise((resolve) => {
