@@ -157,7 +157,7 @@ window.addEventListener('scroll', () => {
                     }   else {
                         resolve();
                     }
-                }dawd
+                }
                 type();
             }); 
         } catch (error) {
