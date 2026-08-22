@@ -7,10 +7,11 @@
         const wrapper = document.getElementById('scaleWrapper');
 
         if(!canvas || !wrapper) return;
+
         function applyScale() {
             canvas.style.transform = 'none';
             const naturalHeight = canvas.offsetHeight;
-
+            
             let scale = window.innerWidth / DESIGN_WIDTH;
 
             if(scale < MIN_SCALE) {
@@ -22,6 +23,10 @@
 
             canvas.style.transform = `scale(${scale})`;
             wrapper.style.height = `${naturalHeight * scale}px`;
+
+            const scaledWidth = DESIGN_WIDTH * scale;
+            const offsetX = Math.max(0, (window.innerWidth - scaledWidth) / 2);
+            canvas.style.marginLeft = `${offsetX}px`;
         }
         
         window.addEventListener('load', applyScale);
