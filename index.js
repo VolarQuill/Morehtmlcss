@@ -63,7 +63,7 @@ window.addEventListener('scroll', () => {
     triggerGlow();
 });
 
-
+    
     const localCommands = {
         about: "Hey - So my Creator is a high schooler with some hobbies, and he made this as a cool personal site, and a cooler terminal bot, who is talking to you right now.",
         help: "Available commands: about, help, music, clear. Type one and hit Enter, or click a button above.",
@@ -71,13 +71,13 @@ window.addEventListener('scroll', () => {
     };
 
     async function fetchAIResponse(question) {                  //AI response terminal
-        const response = await fetch('api/ask.js', {
+        const response = await fetch('api/ask', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ question })
         });
 
-        const data = await responsee.json();
+        const data = await response.json();
 
         if(!response.ok) {
             throw new Error(data.error || `HTTP ${response.status}`);
@@ -86,7 +86,7 @@ window.addEventListener('scroll', () => {
         return data.answer;
     }
 
-    async function runCommand(question) {               //questions terminal
+    async function runCommand(question) {               //questionable terminal
         if (isProcessing) return;
         if(!question) return;
 
