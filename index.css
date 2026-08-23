@@ -402,6 +402,8 @@
                 position: relative;
                 min-height: clamp(200px, 30vw, 480px);
             }
+            .polaroid{
+            }
             .name2{
                 color: white;
                 text-shadow: 0px 0px 1px rgb(254, 254, 254);
@@ -760,6 +762,9 @@
                 border-color: transparent;
                 border-radius: 15px;
                 transform: rotate(3deg); 
+            }
+                .polaroid{
+                
             }
             .sticker6:hover{
                 transform: rotate(3deg) scale(1.15);

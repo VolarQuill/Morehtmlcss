@@ -37,7 +37,7 @@ const activeInputRow = document.getElementById('activeInputRow');
 
 let isProcessing = false;
 let movementTimer;
-let lastX = -1000;a
+let lastX = -1000;
 let lastY = -1000;
 
 function triggerGlow() {
