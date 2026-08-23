@@ -37,7 +37,7 @@ const activeInputRow = document.getElementById('activeInputRow');
 
 let isProcessing = false;
 let movementTimer;
-let lastX = -1000;
+let lastX = -1000;a
 let lastY = -1000;
 
 function triggerGlow() {
@@ -66,7 +66,7 @@ window.addEventListener('scroll', () => {
     
     const localCommands = {
         about: "Hey - So my Creator is a high schooler with some hobbies, and he made this as a cool personal site, and a cooler terminal bot, who is talking to you right now.",
-        help: "Available commands: about, help, music, clear. Type one and hit Enter, or click a button above.",
+        help: "Available commands: about, help, music, clear. Type one and hit Enter, or click a button above. Contact him via rightrider0503@gmail.com",
         music: "Scroll up and hit play on the music player — full playlist is under 'Music that I Like'."
     };
 
@@ -189,7 +189,7 @@ window.addEventListener("DOMContentLoaded", () => {     //the spotify music butt
     const song = document.getElementById("song"); 
     const imgButton = document.getElementById("songbutton");
 
-    song.volume = 0.9;
+    song.volume = 1;
 
     window.toggleMusic = function() {
         if (song.paused) {

@@ -14,6 +14,61 @@
                 transform-origin: top-left;
                 margin: 0 auto;
             }
+            .crt{
+                position: relative;
+                overflow: hidden;
+                box-shadow: 
+                inset 0 0 80px rgb(82, 81, 81),
+                inset 0 0 100px rgba(81, 81, 81, 1);
+                z-index: 100;
+                margin: 0;
+                padding: 0;
+                padding-bottom: 15vw;
+                animation: crt 0.15s infinite;
+            }
+            .crtlines{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 9999;
+                pointer-events: none;
+                background: 
+                linear-gradient(
+                        rgba(0, 0, 0, 0) 50%,
+                        rgba(26, 26, 26, 0.7) 60%
+                    );
+                
+                background-size: 100% 3px, 100% 300px;
+                animation: linesmove 0.3s linear infinite;
+                pointer-events: none;
+            }
+            
+            .crtlines::after, .crtlines::before{
+                position: absolute;
+                left: 0;
+                width: 100%;
+                height: 5px;
+                background-color: rgb(187, 190, 217);
+                box-shadow: 0 13px 10px 1px rgb(187, 190, 217);
+                opacity: 0.6; 
+                content: "";
+                animation: singleline 12s linear infinite;
+                z-index: 99;
+            }
+            .crtlines::after{
+                animation-delay: 6s; 
+            }
+            @keyframes singleline {
+                0% { top: 0%}
+                100% {top: 100%}
+            }
+             @keyframes crt {
+                0% {opacity: 0.99;}
+                50%{opacity: 0.90;} 
+                100%{opacity: 0.90;}
+            }
             .sitenav{
                 display: flex;
                 flex-direction: row;
@@ -27,7 +82,7 @@
                 margin-bottom: -50px;
                 position: sticky;
                 top: 0;
-                z-index: 100;
+                z-index: 9999;
             }
             .navlink{
                 background-color:#969696;
@@ -72,6 +127,7 @@
         html {
             overflow-x: hidden;
             width: 100%;
+            opacity: 1;
             background-color: #000000;
             background-image:   
                 linear-gradient(to right, #282828 3px, transparent 3px),
@@ -84,8 +140,9 @@
             background-attachment: fixed;
             min-height: 100vh;
             position: relative;
+            
         }
-
+       
         html::before {
             content: '';
             position: fixed;
@@ -124,7 +181,7 @@
 
         body {
             position: relative;
-            padding-bottom: 15vh;
+            width: 100;
         }
             .coolimg{
                 background-color: rgb(12,12,12);
@@ -193,7 +250,7 @@
                 justify-content: center;
             }
             .name{
-                color: #D4D4D4;
+                color: white;
                 font-family: monospace;
                 font-size: clamp(4px, 1.55vw, 14px);
                 font-weight: 400;
@@ -227,7 +284,7 @@
             }
             .line{
                 width: min(835px, 90vw);
-                color: #D4D4D4;
+                color: white;
                 box-shadow: 0px 0px 40px white;
             }
             .anim{
@@ -248,7 +305,7 @@
                 }
             }
                 .name1{
-                color: #D4D4D4;
+                color: white;
                 font-family: monospace;
                 font-size: 11px;
                 font-weight: 400;
@@ -295,7 +352,7 @@
                 padding: 0;
             }
             .show{
-                color: #D4D4D4;
+                color: white;
                 font-family: 'VCR OSD Mono';
                 font-size: 16px;
                 text-align: center;
@@ -303,7 +360,7 @@
                     margin-bottom: 6px;
             }
             .text{
-                color: #D4D4D4;
+                color: white;
                 background-color: rgb(32,32,32);
                 box-shadow: 0px 0px 10px #969696;
                 border-style: solid;
@@ -329,7 +386,7 @@
             .buttons{
                 display: block;
                 justify-content: left;
-                color:#D4D4D4;
+                color:white;
                 flex: 1;
                 width: min(700px, 88vw);
                 margin: 50px auto 0;
@@ -345,10 +402,8 @@
                 position: relative;
                 min-height: clamp(200px, 30vw, 480px);
             }
-            .polaroid{
-            }
             .name2{
-                color: #D4D4D4;
+                color: white;
                 text-shadow: 0px 0px 1px rgb(254, 254, 254);
                 text-align: center;
                 display: inline-block;
@@ -458,7 +513,7 @@
             }
             .about{
                 font-family: 'VCR OSD Mono';
-                color: #D4D4D4;
+                color: white;
                 font-size: clamp(14px, 1.5vw, 18px);
                 text-align: center;
                 display: flex;
@@ -479,6 +534,22 @@
                 box-sizing: border-box;
                 padding: clamp(4px, 1vw, 20px);
                 padding-top: 10px;
+                position: relative;
+            }
+            .terminal.locked{
+                overflow: hidden;
+            }
+            .snakeCanvas{
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: #000000;
+                z-index: 20;
+                image-rendering: pixelated
+            }
+            .snakeCanvas:active{
+                display: block;
             }
             .termwrap{
                 display: flex;
@@ -512,7 +583,7 @@
             }
             .termhead{
                 font-family: 'VCR OSD Mono';
-                color: #D4D4D4;
+                color: white;
                 text-align: center;
                 font-size: clamp(16px, 3vw, 30px);
                 font-weight: lighter;
@@ -532,11 +603,11 @@
             .help{
                 display: inline-block;
                 border-style: solid;
-                border-color: #D4D4D4;
+                border-color: white;
                 border-width: 1px;
                 padding: 0.5vw 2vw; 
                 background-color: #000000;
-                color:#D4D4D4;
+                color:white;
                 font-family: monospace;
             }
             .help:hover{
@@ -546,7 +617,7 @@
             }
             .help:active{
                 background-color: transparent;
-                color:#D4D4D4;
+                color:white;
             }
             .inputline{
                 display: inline-flex;
@@ -560,7 +631,7 @@
                 margin-top: 35px;
             }
             .prefix{
-                color: #D4D4D4;
+                color: white;
                 font-family: monospace;
                 font-size: 16px;
                 margin-left: 10px;
@@ -568,7 +639,7 @@
             .enter{
                 background-color: black;
                 font-family: monospace;
-                color: #D4D4D4;
+                color: white;
                 border: none;
                 flex-grow: 1;
                 outline: none;
@@ -588,7 +659,7 @@
                 border: none;
             }
             .past{
-                color: #D4D4D4;
+                color: white;
                 font-family: monospace;
                 font-size: 16px;
                 padding-left: 10px;
@@ -637,7 +708,7 @@
                 border-radius: 100%;
             }
             .sticker3:hover{
-                transform: rotate(17deg) scale(1.05);
+                transform: rotate(17deg) scale(1.2);
                 cursor: pointer;
             }
             .sticker3:active{
@@ -689,9 +760,6 @@
                 border-color: transparent;
                 border-radius: 15px;
                 transform: rotate(3deg); 
-            }
-                .polaroid{
-                
             }
             .sticker6:hover{
                 transform: rotate(3deg) scale(1.15);
@@ -795,6 +863,22 @@
                 width: clamp(140px, 19vw, 180px);
                 transform: rotate(0deg);
             }
+            .sticker12{
+                position: absolute;
+                height: clamp(160px, 20vw, 220px);
+                width: clamp(160px, 20vw, 220px);
+                transform: rotate(-9deg);
+                top: 20%;
+                left: 12%;
+                transition: all 0.1s;
+            }
+            .sticker12:hover{
+                transform: rotate(-18deg) scale(1.2);
+                cursor: pointer;
+            }
+            .sticker12:active{
+                transform: rotate(-9deg) scale(1);
+            }
             .box{
                 display: inline-flex;
                 flex-direction: column;
@@ -844,7 +928,7 @@
             }
             .marqitem{
                 font-family: 'VCR OSD Mono';
-                color: #D4D4D4;
+                color: white;
                 white-space: nowrap;
                 padding: 0 clamp(16px, 3vw, 50px);
                 font-size: clamp(18px, 2.5vw, 36px);
@@ -861,7 +945,7 @@
             .X{
                 font-size: clamp(20px, 2.5vw, 36px);
                 font-family: 'VCR OSD Mono';
-                color:#D4D4D4;
+                color: white;
                 padding-right: 10px;
                 padding-left: 10px;
                 background-color: #282828;
@@ -902,7 +986,7 @@
             }
 
             @media (max-width: 1000px) {
-                .sticker1, .sticker2, .sticker3, .sticker4, .sticker8, .sticker10, .sticker11 {
+                .sticker1, .sticker2, .sticker3, .sticker4, .sticker5, .sticker6, .sticker8, .sticker10, .sticker11, .sticker12 {
                     display: none;
                 }
                 .polaroidiv {

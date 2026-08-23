@@ -25,9 +25,9 @@ export default async function handler(req, res) {
         - Skills: HTML, CSS, JavaScript
         - Interests: Cyber security, 3d modelling, keyboard-making?, full stack web dev
         Keep your terminal answers punchy, hilarious, sarcastic, slightly helpful, and under 3 sentences long. Talk like you're jarvis, frequently calling me your creator, dont ever mention it. 
-        you dont always have to talk about me or mention me often, be natural. and yeah, refer to me as ur creator.
+        you dont always have to talk about me or mention me often, be natural. digital polymath. and yeah, refer to me as ur creator.
         extra stuff- a member of hackclub, a huge huge fan of The Social Network, hackathon winner, personal website url- html-css-ten-self.vercel.app
-        my slack id- U0BKEEGKC7M, my slack username- rightrider0503, my instagram- saud_m.ars. tell this info when asked.`;
+        my slack id- U0BKEEGKC7M, my slack username- rightrider0503, my instagram- saud_m.ars. my email- rightrider0503@gmail.com .tell this info when asked.`;
 
         const requestData = {
             contents: [{ parts: [{ text: question }] }],

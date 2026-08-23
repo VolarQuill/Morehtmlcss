@@ -1,1 +1,12 @@
 <img class="sticker7" src="images/removed-background (7).png">
+
+
+ linear-gradient(
+                    rgb(189, 191, 212), 
+                    rgba(255, 255, 255, 0.03) 3%,
+                    rgba(255, 255, 255, 0) %
+                );
+                 @keyframes linesmove {
+                0%{background-position: 0 0, 0 0;}
+                100%{background-position: 0 0, 0 10px;}
+            }
