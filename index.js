@@ -286,3 +286,66 @@ document.querySelectorAll('.navlink').forEach(btn => {
         target.scrollIntoView({ behavior: 'smooth', block: 'start'});
     });
 });
+
+(function () {
+    const launchBtn = document.getElementById('launchBtn');
+    const bootMain = document.getElementById('bootMain');
+    const bootLog = document.getElementById('bootLog');
+    const bootScreen = document. getElementById('bootScreen');
+    const siteContent = document.getElementById('siteContent');
+
+    if (!launchBtn) return;
+    function wait(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+    function addLine(text){
+        const p = document.createElement('p');
+        p.textContent = text;
+        bootLog.appendChild(p);
+        return p;
+    }
+
+    async function runBoot() {
+        bootMain.style.display = 'none';
+        bootLog.style.display = 'block';
+        await wait(500);
+
+        addLine('SAUXBIOS v1.0 (C) 1988');
+        await wait(1000);
+        
+        addLine('CPU: MUH Dual @ 1MHz');
+        await wait(1000);
+        
+        addLine('RAM TEST: 64KB OK...');
+        await wait(1000);
+
+        const loadLine = addLine('LOADING ROOT FILESYSTEM');
+        const cursor = document.createElement('span');
+        cursor.className = 'boot-cursor';
+        loadLine.appendChild(cursor);
+
+        const totalDots = 26;
+        const slowDots = Math.round(totalDots * 0.4);
+        for (let i = 0; i < totalDots; i++) {
+            cursor.insertAdjacentText('beforebegin', '.');
+            await wait(i < slowDots ? 150 : 20);
+        }
+        
+        await wait(150);
+        cursor.remove();
+        loadLine.textContent += ' SUCCESS!';
+
+        await wait(700); 
+
+        bootScreen.classList.add('gone');
+        siteContent.style.display = 'block';
+
+        window.dispatchEvent(new Event('resize'));
+        window.dispatchEvent(new Event('scroll'));
+    } 
+  
+    launchBtn.addEventListener('click', () => {
+        launchBtn.disabled = true;
+        runBoot();
+    });
+})();

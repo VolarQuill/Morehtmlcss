@@ -20,14 +20,16 @@
                 box-shadow: 
                 inset 0 0 80px rgb(82, 81, 81),
                 inset 0 0 100px rgba(81, 81, 81, 1);
-                z-index: 100;
+                z-index: 100;  
                 margin: 0;
                 padding: 0;
                 padding-bottom: 15vw;
                 animation: crt 0.15s infinite;
+                top: 0%;
+                border-radius: 50px / 30%;
             }
             .crtlines{
-                position: absolute;
+                position: fixed;
                 top: 0;
                 left: 0;
                 width: 100%;
@@ -35,14 +37,20 @@
                 z-index: 9999;
                 pointer-events: none;
                 background: 
+                radial-gradient(
+                    ellipse at center,
+                    transparent 55%,
+                    rgba(0, 0, 0, 0.75) 140%
+                ),
                 linear-gradient(
                         rgba(0, 0, 0, 0) 50%,
-                        rgba(26, 26, 26, 0.7) 60%
+                        rgba(26, 26, 26, 0.65) 60%
                     );
                 
-                background-size: 100% 3px, 100% 300px;
+                background-size: 100% 100%, 100% 2px;
                 animation: linesmove 0.3s linear infinite;
                 pointer-events: none;
+                inset: 0;
             }
             
             .crtlines::after, .crtlines::before{
@@ -51,7 +59,7 @@
                 width: 100%;
                 height: 5px;
                 background-color: rgb(187, 190, 217);
-                box-shadow: 0 13px 10px 1px rgb(187, 190, 217);
+                box-shadow: 0 -13px 10px 1px rgb(187, 190, 217);
                 opacity: 0.6; 
                 content: "";
                 animation: singleline 12s linear infinite;
@@ -61,13 +69,15 @@
                 animation-delay: 6s; 
             }
             @keyframes singleline {
-                0% { top: 0%}
+                0% { top: -70%}
                 100% {top: 100%}
+                
             }
              @keyframes crt {
                 0% {opacity: 0.99;}
                 50%{opacity: 0.90;} 
                 100%{opacity: 0.90;}
+
             }
             .sitenav{
                 display: flex;
@@ -1019,5 +1029,85 @@
                 .music {
                     width: min(340px, 80vw);
                     height: auto;
+                }
+            }
+            .sitecontent{
+                display: none;
+            }
+            .bootscreen{
+                position: fixed;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                background-color: black;
+                z-index: 5000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 6vw;
+                text-align: left;
+            }
+            .bootscreen.gone{
+                display: none;
+            }
+            .bootmain{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .bootlaunchbtn{
+                background-color: #A5A5A5;
+                color: black;
+                border-style: solid;
+                border-width: 2px;
+                font-family: 'VCR OSD Mono';
+                font-size: clamp(16px, 2.6vw, 26px);
+                letter-spacing: 3px; 
+                cursor: pointer;
+                box-shadow: 0px 0px 50px rgba(56, 255, 112, 0.55);
+                animation: bootbtn 1.6s ease-in-out infinite;
+                transition: all 0.1s ease-out;
+                transform: scale(1.5);
+            }
+            .bootlaunchbtn:hover{
+                background-color: rgba(56, 255, 112, 0.1);
+                transform: translate(-2px, -2px), scale(1.5);
+                color: #A5A5A5;
+                border-color: #A5A5A5;
+            }
+            .bootlaunchbtn:active{
+                transform: translate(1px, 1px);
+                box-shadow: 0px 0px 6px rgba(56, 255, 112, 0.6);
+            }
+            @keyframes bootbtn{
+                0%, 100% { box-shadow: 0px 0px 30px rgba(56, 255, 112, 0.4);}
+                50%{ box-shadow: 0px 0px 40px rgba(56, 255, 112, 0.9);}
+            }
+            .bootlog{
+                display: none;
+                color: #38ff70;
+                font-family: 'VCR OSD Mono';
+                font-size: clamp(13px, 1.9vw, 19px); 
+                text-shadow: 0px 0px 6px rgba(56, 255, 112, 0.8);
+                white-space: pre-wrap;
+                width: min(680px, 90vw);
+                line-height: 1.7;
+            }
+            .bootlog p {
+                margin: 0 0 2px 0;
+            }
+            .boot-cursor{
+                display: inline-block;
+                width: 0.55em;
+                height: 1em;
+                background-color: #38ff70;
+                box-shadow: 0px 0px 6px #38ff70;
+                animation: terminal-blink 0.8s infinite;
+                vertical-align: text-bottom;
+                margin-left: 2px;
+            }
+            @media (max-width: 560px) {
+                .bootscreen{
+                    padding: 8vw 6vw;
                 }
             }
