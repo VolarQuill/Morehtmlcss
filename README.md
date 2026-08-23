@@ -10,7 +10,7 @@ I collected assets such as the stickers for the website from pinterest, the musi
 
 For the Terminal Bot, I used three GEMINI_API_KEY (s), 2 as fallback. I Saved the API keys in my vercel environment variables to keep them secure.
 
-And yes, I **have** to Tailwind CSS now because those 800 lines are _**monstrous.**_
+And yes, I **have** to learn Tailwind CSS now because those 800 lines are _**monstrous.**_
 
 **You can try it out on-** [My Website](morehtmlcss.vercel.app)
 
