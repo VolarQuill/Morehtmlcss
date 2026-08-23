@@ -1,4 +1,4 @@
-##Welcome To My Personal Website.##
+Welcome To My Personal Website.
 This Project uses JavaScript combined with HTML5 and about a thousand lines of CSS to make a beautiful animated page.
 
 I've used particular colors to design the website-
