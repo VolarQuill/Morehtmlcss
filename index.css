@@ -612,6 +612,15 @@
                 margin-left: 20px;
                 gap: 10px;
             }
+            .prefixdate{
+                display: block;
+                font-size: 16px;
+            }
+            .prefixline{
+                display: flex;
+                white-space: nowrap;
+                
+            }
             .help{
                 display: inline-block;
                 border-style: solid;
@@ -633,7 +642,7 @@
             }
             .inputline{
                 display: inline-flex;
-                flex-direction: row;
+                flex-direction: column;
                 align-items: flex-start;
                 width: 100%;
                 height: auto;
@@ -647,6 +656,7 @@
                 font-family: monospace;
                 font-size: 16px;
                 margin-left: 10px;
+                white-space: nowrap;
             }
             .enter{
                 background-color: black;
@@ -665,7 +675,6 @@
                 width: 100%;
                 min-width: 0;
                 padding-left: 10px;
-                margin-top: 20px;
             }
             .enter:active{
                 border: none;
@@ -1076,8 +1085,10 @@
                 border-color: #A5A5A5;
             }
             .bootlaunchbtn:active{
-                transform: translate(1px, 1px);
+                transform: scale(1.5), translate(5px, 5px);
                 box-shadow: 0px 0px 6px rgba(56, 255, 112, 0.6);
+                background-color: #A5A5A5;
+                color: black;
             }
             @keyframes bootbtn{
                 0%, 100% { box-shadow: 0px 0px 30px rgba(56, 255, 112, 0.4);}
@@ -1092,9 +1103,11 @@
                 white-space: pre-wrap;
                 width: min(680px, 90vw);
                 line-height: 1.7;
+                scale: (2);
             }
             .bootlog p {
                 margin: 0 0 2px 0;
+                scale: (2);
             }
             .boot-cursor{
                 display: inline-block;

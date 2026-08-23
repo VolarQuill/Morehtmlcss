@@ -105,7 +105,7 @@ window.addEventListener('scroll', () => {
         try{
             const historyRow = document.createElement('div');
             historyRow.className = 'inputline';
-            historyRow.innerHTML = `<span class="prefix"> PS C:\\Ask\\Something\\About\\Me&gt; </span><span class="past";">${question}</span>`;
+            historyRow.innerHTML = `<div class="prefixdate">[${getTimeString()}]</div><div class="prefixline"><span class="prefix">PS C:\\Ask\\Something\\About\\Me&gt; </span><span class="past";">${question}</span></div>`;
             terminalLog.insertBefore(historyRow, activeInputRow);
 
             userInput.value = '';
@@ -319,13 +319,13 @@ document.querySelectorAll('.navlink').forEach(btn => {
         addLine('RAM TEST: 64KB OK...');
         await wait(1000);
 
-        const loadLine = addLine('LOADING ROOT FILESYSTEM');
+        const loadLine = addLine('LOADING ROOT FILE SYSTEM');
         const cursor = document.createElement('span');
         cursor.className = 'boot-cursor';
         loadLine.appendChild(cursor);
 
-        const totalDots = 26;
-        const slowDots = Math.round(totalDots * 0.4);
+        const totalDots = 24;
+        const slowDots = Math.round(totalDots * 0.7);
         for (let i = 0; i < totalDots; i++) {
             cursor.insertAdjacentText('beforebegin', '.');
             await wait(i < slowDots ? 150 : 20);
@@ -349,3 +349,21 @@ document.querySelectorAll('.navlink').forEach(btn => {
         runBoot();
     });
 })();
+
+        function getTimeString() {
+            const now = new Date();
+            const date = now.toLocaleDateString('en-US');
+            const time = now.toLocaleTimeString('en-US', { hour12: false});
+            const tzParts = now.toLocaleTimeString('en-US', { timeZoneName: 'short'}).split(' ');
+            const tz = tzParts[tzParts.length - 1];
+            return `${date} ${time} ${tz}`;
+        }
+        function updateLivePrompt() {
+            const dateEl = document.getElementById('livePrefixDate');
+            const el = document.getElementById('livePrefix');
+            if (!dateEl || !el) return;
+            dateEl.textContent = `[${getTimeString()}]`;
+            el.textContent = 'PS C:\\Ask\\Something\\About\\Me>'
+        }
+        updateLivePrompt();
+        setInterval(updateLivePrompt, 1000);

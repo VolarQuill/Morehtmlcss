@@ -10,18 +10,20 @@
     <body>
       
         <nav class="sitenav">
-            <button class="navlink" data-target="music">Play</button>
-            <button class="navlink" data-target="skills">Skills</button>
-            <button class="navlink" data-target="music1">Music</button>
-            <button class="navlink" data-target="projects">Projects</button>
-            <button class="navlink" data-target="pins">Pins</button>
-            <button class="navlink" data-target="terminal">Terminal</button>
+            <button onclick="getElementById('click').play();" class="navlink" data-target="music">Play</button>
+            <button onclick="getElementById('click').play();" class="navlink" data-target="skills">Skills</button>
+            <button onclick="getElementById('click').play();" class="navlink" data-target="music1">Music</button>
+            <button onclick="getElementById('click').play();" class="navlink" data-target="projects">Projects</button>
+            <button onclick="getElementById('click').play();" class="navlink" data-target="pins">Pins</button>
+            <button onclick="getElementById('click').play();" class="navlink" data-target="terminal">Terminal</button>
         </nav>
           <div class="crt">
             <div class="crtlines"></div>
             <div class="bootscreen" id="bootScreen">
                 <div class="bootmain" id="bootMain">
-                    <button class="bootlaunchbtn" id="launchBtn">LAUNCH SYSTEM</button>
+                    <audio id="click" src="images/Mechanical Keyboard Click 02.wav"></audio>
+                    <audio id="song" src="images/social.mp3"></audio>
+                    <button onclick="document.getElementById('click').play(); document.getElementById('song').play();" class="bootlaunchbtn" id="launchBtn">LAUNCH SYSTEM</button>
                 </div>
                 <div class="bootlog" id="bootLog"></div>
             </div>
@@ -193,7 +195,9 @@
                     <button class="help">clear</button></div>
             <div class="terminal" id="terminalLog">
             <div class="inputline" id="activeInputRow">
-                <span class="prefix">PS C:\Ask\Something\About\Me> </span><textarea class="enter" type="text" id="userInput"></textarea>
+                <div id="livePrefixDate" class="prefixdate"></div>
+                <div class="prefixline">
+                <span id="livePrefix" class="prefix">PS C:\Ask\Something\About\Me> </span><textarea class="enter" type="text" id="userInput"></textarea></div>
             </div></div></div>
         </div></div></div></div></div></div>
     </div>
