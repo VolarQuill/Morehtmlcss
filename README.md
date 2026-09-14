@@ -14,7 +14,7 @@ For the Terminal Bot, I used three GEMINI_API_KEY (s), 2 as fallback. I Saved th
 
 And yes, I **have** to learn Tailwind CSS now because those 800 lines are _**monstrous.**_
 
-**You can try it out on-** [My Website](morehtmlcss.vercel.app)
+**You can try it out on-** morehtmlcss.vercel.app
 
 Regarding the massive time spike before submission, i had exams from august 10 till august 19, after which i had to cram work in a 4 day holiday to finish the project after seeing the sudden deadline. In attempt of which i also made it to global 1. for the first time ever! this is my first major submission! <img width="1602" height="906" alt="image" src="https://github.com/user-attachments/assets/27948c7a-d1db-4a60-9939-cabe12ec60c9" />
 
