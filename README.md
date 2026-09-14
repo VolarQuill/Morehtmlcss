@@ -6,7 +6,7 @@ I've used particular colors to design the website-
     #D4D4D4; #A3A3A3; #484848; #969696; #121212; #000000; #FFFFFF; #888888; #c5c4c4; #282828; #363636; black; white.
 And for magnetic cards- rgba(80, 160, 255, 0.35)
 
-I collected assets such as the stickers for the website from pinterest, the music track (In Motion by Trent Reznor) from [Audio](audio.com) The click sound is from a free library.
+I collected assets such as the stickers for the website from pinterest, the music track (In Motion by Trent Reznor) from audio.com The click sound is from a free library.
 
 Gemini helped me write some of the javascript code and debug it, after which i made some changes to make it look better and customize it. I used Claude for debugging errors at times.
 
