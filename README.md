@@ -1,6 +1,6 @@
 Welcome To My Personal Website.
 This Project uses JavaScript combined with HTML5 and about a thousand lines of CSS to make a beautiful animated page.
-It has a CRT ovrelay with scanlines, to make it look retro. I also added a Boot-up intro as it looked cool and made build up.
+It has a CRT overlay with scanlines, to make it look retro. I also added a Boot-up intro as it looked cool and made build up.
 
 I've used particular colors to design the website-
     #D4D4D4; #A3A3A3; #484848; #969696; #121212; #000000; #FFFFFF; #888888; #c5c4c4; #282828; #363636; black; white.
@@ -12,7 +12,7 @@ Gemini helped me write some of the javascript code and debug it, after which i m
 
 For the Terminal Bot, I used three GEMINI_API_KEY (s), 2 as fallback. I Saved the API keys in my vercel environment variables to keep them secure.
 
-And yes, I **have** to learn Tailwind CSS now because those 800 lines are _**monstrous.**_
+And yes, I **have** to learn Tailwind CSS now because those 1000 lines are _**monstrous.**_
 
 **You can try it out on-** morehtmlcss.vercel.app
 
