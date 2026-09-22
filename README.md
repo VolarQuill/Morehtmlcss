@@ -13,6 +13,7 @@ Gemini helped me write some of the javascript code and debug it, after which i m
 For the Terminal Bot, I used three GEMINI_API_KEY (s), 2 as fallback. I Saved the API keys in my vercel environment variables to keep them secure.
 
 And yes, I **have** to learn Tailwind CSS now because those 1000 lines are _**monstrous.**_
+NOTE: THE TERMINAL IS VERY SLOW IDK WHY PLEASE BE PATIENT I SWEAR IT WORKS 
 
 **You can try it out on-** morehtmlcss.vercel.app
 
