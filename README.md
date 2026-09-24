@@ -19,5 +19,8 @@ NOTE: THE TERMINAL IS VERY SLOW IDK WHY PLEASE BE PATIENT I SWEAR IT WORKS
 
 Regarding the massive time spike before submission, i had exams from august 10 till august 19, after which i had to cram work in a 4 day holiday to finish the project after seeing the sudden deadline. In attempt of which i also made it to global 1. for the first time ever! this is my first major submission! <img width="1602" height="906" alt="image" src="https://github.com/user-attachments/assets/27948c7a-d1db-4a60-9939-cabe12ec60c9" />
 
+Note: The sticker placements may be different on different monitors. It is supposed to be like this- <img width="1917" height="970" alt="image" src="https://github.com/user-attachments/assets/dce85021-206e-458e-98ac-b57670c7e7e0" />
+
+
 
 
